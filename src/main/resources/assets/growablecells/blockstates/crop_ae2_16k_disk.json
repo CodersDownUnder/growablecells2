@@ -1,0 +1,28 @@
+{
+    "variants": {
+        "age=0": {
+            "model": "growablecells:block/dandelion_stage0"
+        },
+        "age=1": {
+            "model": "growablecells:block/dandelion_stage0"
+        },
+        "age=2": {
+            "model": "growablecells:block/dandelion_stage1"
+        },
+        "age=3": {
+            "model": "growablecells:block/dandelion_stage1"
+        },
+        "age=4": {
+            "model": "growablecells:block/dandelion_stage1"
+        },
+        "age=5": {
+            "model": "growablecells:block/dandelion_stage2"
+        },
+        "age=6": {
+            "model": "growablecells:block/dandelion_stage2"
+        },
+        "age=7": {
+            "model": "growablecells:block/ae2_16k_disk_stage3"
+        }
+    }
+}

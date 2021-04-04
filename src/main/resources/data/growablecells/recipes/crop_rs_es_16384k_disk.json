@@ -1,0 +1,33 @@
+{
+    "type": "forge:conditional",
+    "recipes": [
+        {
+            "conditions": [
+                {
+                    "flag": "rs_es_16384k_disk",
+                    "type": "growablecells:flag"
+                }
+            ],
+            "recipe": {
+                "type": "minecraft:crafting_shaped",
+                "group": "growablecells:extrastorage",
+                "pattern": [
+                    " x ",
+                    "xcx",
+                    " x "
+                ],
+                "key": {
+                    "x": {
+                        "item": "extrastorage:disk_16384k"
+                    },
+                    "c": {
+                        "item": "minecraft:wheat_seeds"
+                    }
+                },
+                "result": {
+                    "item": "growablecells:seed_rs_es_16384k_disk"
+                }
+            }
+        }
+    ]
+}

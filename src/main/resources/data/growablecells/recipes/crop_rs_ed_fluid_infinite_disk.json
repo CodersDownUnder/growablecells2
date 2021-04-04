@@ -1,0 +1,33 @@
+{
+    "type": "forge:conditional",
+    "recipes": [
+        {
+            "conditions": [
+                {
+                    "flag": "rs_ed_fluid_infinite_disk",
+                    "type": "growablecells:flag"
+                }
+            ],
+            "recipe": {
+                "type": "minecraft:crafting_shaped",
+                "group": "growablecells:extradisks",
+                "pattern": [
+                    " x ",
+                    "xcx",
+                    " x "
+                ],
+                "key": {
+                    "x": {
+                        "item": "extradisks:infinite_fluid_storage_disk"
+                    },
+                    "c": {
+                        "item": "minecraft:wheat_seeds"
+                    }
+                },
+                "result": {
+                    "item": "growablecells:seed_rs_ed_fluid_infinite_disk"
+                }
+            }
+        }
+    ]
+}

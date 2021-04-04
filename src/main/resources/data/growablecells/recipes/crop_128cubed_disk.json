@@ -1,0 +1,33 @@
+{
+    "type": "forge:conditional",
+    "recipes": [
+        {
+            "conditions": [
+                {
+                    "flag": "128cubed_disk",
+                    "type": "growablecells:flag"
+                }
+            ],
+            "recipe": {
+                "type": "minecraft:crafting_shaped",
+                "group": "growablecells:appliedenergistics2",
+                "pattern": [
+                    " x ",
+                    "xcx",
+                    " x "
+                ],
+                "key": {
+                    "x": {
+                        "item": "appliedenergistics2:128_cubed_spatial_storage_cell"
+                    },
+                    "c": {
+                        "item": "minecraft:wheat_seeds"
+                    }
+                },
+                "result": {
+                    "item": "growablecells:seed_128cubed_disk"
+                }
+            }
+        }
+    ]
+}
