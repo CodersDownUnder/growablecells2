@@ -43,5 +43,10 @@
   "block.growablecells.crop_ae2_fluid_16k_disk": "Applied Energistics 2 16K Fluid Cell Seed",
   "block.growablecells.crop_ae2_fluid_64k_disk": "Applied Energistics 2 64K Fluid Cell Seed",
   
+  "block.growablecells.crop_mek_qio_drive": "Mekanism QIO Drive Seed",
+  "block.growablecells.crop_mek_qio_hyper_drive": "Mekanism Hyper-Dense QIO Drive Seed",
+  "block.growablecells.crop_mek_qio_time_drive": "Mekanism Time-Dilating QIO Drive Seed",
+  "block.growablecells.crop_mek_qio_super_drive": "Mekanism Supermassive QIO Drive Seed",
+  
   "itemGroup.growablecells": "Growable Cells 2"
 }

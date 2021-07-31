@@ -98,6 +98,18 @@ public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(For
 	public static final RegistryObject<Block> CROP_RS_ES_FLUID_65536K_DISK = BLOCKS.register("crop_rs_es_fluid_65536k_disk", () -> new SingleCropBlock(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.PLANT)));
 	public static final RegistryObject<Block> CROP_RS_ES_FLUID_262144K_DISK = BLOCKS.register("crop_rs_es_fluid_262144k_disk", () -> new SingleCropBlock(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.PLANT)));
 	public static final RegistryObject<Block> CROP_RS_ES_FLUID_1048576K_DISK = BLOCKS.register("crop_rs_es_fluid_1048576k_disk", () -> new SingleCropBlock(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.PLANT)));
+	
+	/*
+	 *===================================================================================================================================
+	 * Mekanism QIO
+	 *===================================================================================================================================
+	 */
+	
+	//Normal
+	public static final RegistryObject<Block> CROP_MEK_QIO_DRIVE = BLOCKS.register("crop_mek_qio_drive", () -> new SingleCropBlock(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.PLANT)));
+	public static final RegistryObject<Block> CROP_MEK_QIO_HYPER_DRIVE = BLOCKS.register("crop_mek_qio_hyper_drive", () -> new SingleCropBlock(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.PLANT)));
+	public static final RegistryObject<Block> CROP_MEK_QIO_TIME_DRIVE = BLOCKS.register("crop_mek_qio_time_drive", () -> new SingleCropBlock(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.PLANT)));
+	public static final RegistryObject<Block> CROP_MEK_QIO_SUPER_DRIVE = BLOCKS.register("crop_mek_qio_super_drive", () -> new SingleCropBlock(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.PLANT)));
 
 	
 }

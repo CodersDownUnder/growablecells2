@@ -96,5 +96,17 @@ public class ItemInit {
 	public static final RegistryObject<Item> SEED_RS_ES_FLUID_65536K_DISK = ITEMS.register("seed_rs_es_fluid_65536k_disk", () -> new BlockItem(BlockInit.CROP_RS_ES_FLUID_65536K_DISK.get(), new Item.Properties()));
 	public static final RegistryObject<Item> SEED_RS_ES_FLUID_262144K_DISK = ITEMS.register("seed_rs_es_fluid_262144k_disk", () -> new BlockItem(BlockInit.CROP_RS_ES_FLUID_262144K_DISK.get(), new Item.Properties()));
 	public static final RegistryObject<Item> SEED_RS_ES_FLUID_1048576K_DISK = ITEMS.register("seed_rs_es_fluid_1048576k_disk", () -> new BlockItem(BlockInit.CROP_RS_ES_FLUID_1048576K_DISK.get(), new Item.Properties()));
+	
+	/*
+	 *===================================================================================================================================
+	 * Mekanism
+	 *===================================================================================================================================
+	 */
+	
+	//Normal
+	public static final RegistryObject<Item> SEED_MEK_QIO_DRIVE = ITEMS.register("seed_mek_qio_drive", () -> new BlockItem(BlockInit.CROP_MEK_QIO_DRIVE.get(), new Item.Properties()));
+	public static final RegistryObject<Item> SEED_MEK_QIO_HYPER_DRIVE = ITEMS.register("seed_mek_qio_hyper_drive", () -> new BlockItem(BlockInit.CROP_MEK_QIO_HYPER_DRIVE.get(), new Item.Properties()));
+	public static final RegistryObject<Item> SEED_MEK_QIO_TIME_DRIVE = ITEMS.register("seed_mek_qio_time_drive", () -> new BlockItem(BlockInit.CROP_MEK_QIO_TIME_DRIVE.get(), new Item.Properties()));
+	public static final RegistryObject<Item> SEED_MEK_QIO_SUPER_DRIVE = ITEMS.register("seed_mek_qio_super_drive", () -> new BlockItem(BlockInit.CROP_MEK_QIO_SUPER_DRIVE.get(), new Item.Properties()));
 
 }

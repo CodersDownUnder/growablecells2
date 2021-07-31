@@ -25,6 +25,10 @@ public class GrowableCellsItemGroup extends ItemGroup {
 				return new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("refinedstorage:1k_storage_disk")));
 			}
 			
+			if (GrowableCellsMod.MEKLoaded) {
+				return new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("mekanism:qio_drive_base")));
+			}
+			
 			return new ItemStack(Items.BARRIER);
 		  }
 
@@ -85,6 +89,13 @@ public class GrowableCellsItemGroup extends ItemGroup {
 				  items.add(new ItemStack(ItemInit.SEED_RS_ES_FLUID_65536K_DISK.get()));
 				  items.add(new ItemStack(ItemInit.SEED_RS_ES_FLUID_262144K_DISK.get()));
 				  items.add(new ItemStack(ItemInit.SEED_RS_ES_FLUID_1048576K_DISK.get()));
+			  }
+			  
+			  if (GrowableCellsMod.MEKLoaded) {
+				  items.add(new ItemStack(ItemInit.SEED_MEK_QIO_DRIVE.get()));
+				  items.add(new ItemStack(ItemInit.SEED_MEK_QIO_HYPER_DRIVE.get()));
+				  items.add(new ItemStack(ItemInit.SEED_MEK_QIO_TIME_DRIVE.get()));
+				  items.add(new ItemStack(ItemInit.SEED_MEK_QIO_SUPER_DRIVE.get()));
 			  }
 		  }
 

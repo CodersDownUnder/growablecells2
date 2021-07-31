@@ -86,5 +86,16 @@ public class GrowableCellsModFlags {
     public static String FLAG_RS_ES_FLUID_65536K_DISK = "rs_es_fluid_65536k_disk";
     public static String FLAG_RS_ES_FLUID_262144K_DISK = "rs_es_fluid_262144k_disk";
     public static String FLAG_RS_ES_FLUID_1048576K_DISK = "rs_es_fluid_1048576k_disk";
-
+    
+    
+    /*
+     *===================================================================================================================================
+     * Mekanism
+     *===================================================================================================================================
+     */
+    
+    public static String FLAG_MEK_QIO_DRIVE = "mek_qio_drive";
+    public static String FLAG_MEK_QIO_HYPER_DRIVE = "mek_qio_hyper_drive";
+    public static String FLAG_MEK_QIO_TIME_DRIVE = "mek_qio_time_drive";
+    public static String FLAG_MEK_QIO_SUPER_DRIVE = "mek_qio_super_drive";
 }

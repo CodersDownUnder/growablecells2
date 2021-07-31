@@ -17,44 +17,56 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
+
 @Mod(GrowableCellsMod.MODID)
 public class GrowableCellsMod
 {
     
 	public static final String MODID = "growablecells";
 	public static GrowableCellsItemGroup GROWABLE_CELLS_ITEM_GROUP;
+	
 	public static Boolean AE2Loaded;
 	
 	public static Boolean RSLoaded;
 	public static Boolean RSESLoaded;
 	public static Boolean RSEDLoaded;
 	
+	public static Boolean MEKLoaded;
+	
 	public static final Logger LOGGER = LogManager.getLogger();
 
     public GrowableCellsMod() {
     	
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+        
         bus.addListener(this::setup);
         bus.addListener(this::clientSetup);
-              
+        
+        //ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, GrowableStorageConfig.SERVER_CONFIG, "growablestorage-server.toml");
+        
         ItemInit.ITEMS.register(bus);
         BlockInit.BLOCKS.register(bus);
 
         MinecraftForge.EVENT_BUS.register(this);
-        
+
         GROWABLE_CELLS_ITEM_GROUP = new GrowableCellsItemGroup("growablecells");
         
         AE2Loaded = ModList.get().isLoaded("appliedenergistics2");
         RSLoaded = ModList.get().isLoaded("refinedstorage");
         RSEDLoaded = ModList.get().isLoaded("extradisks");
         RSESLoaded = ModList.get().isLoaded("extrastorage");
+        MEKLoaded = ModList.get().isLoaded("mekanism");
+        
         
         registerFlags();
     }
     
     private void registerFlags() {
-    	
+        
     	//Applied Energistics 2
+        
+        
+        
     	if (AE2Loaded) {
     		GrowableCellsModFlags.setFlag(GrowableCellsModFlags.FLAG_AE2_1K_DISK, true);
     	    GrowableCellsModFlags.setFlag(GrowableCellsModFlags.FLAG_AE2_4K_DISK, true);
@@ -153,6 +165,13 @@ public class GrowableCellsMod
     		GrowableCellsModFlags.setFlag(GrowableCellsModFlags.FLAG_RS_ES_FLUID_262144K_DISK, false);
     		GrowableCellsModFlags.setFlag(GrowableCellsModFlags.FLAG_RS_ES_FLUID_1048576K_DISK, false);
     	}
+    	
+    	if (MEKLoaded) {
+    		GrowableCellsModFlags.setFlag(GrowableCellsModFlags.FLAG_MEK_QIO_DRIVE, true);
+    		GrowableCellsModFlags.setFlag(GrowableCellsModFlags.FLAG_MEK_QIO_HYPER_DRIVE, true);
+    		GrowableCellsModFlags.setFlag(GrowableCellsModFlags.FLAG_MEK_QIO_TIME_DRIVE, true);
+    		GrowableCellsModFlags.setFlag(GrowableCellsModFlags.FLAG_MEK_QIO_SUPER_DRIVE, true);
+    	}
     }
 
     private void setup(final FMLCommonSetupEvent event)
@@ -211,14 +230,23 @@ public class GrowableCellsMod
                 ComposterBlock.CHANCES.put(ItemInit.SEED_RS_ES_FLUID_65536K_DISK.get(), chance);
                 ComposterBlock.CHANCES.put(ItemInit.SEED_RS_ES_FLUID_262144K_DISK.get(), chance);
                 ComposterBlock.CHANCES.put(ItemInit.SEED_RS_ES_FLUID_1048576K_DISK.get(), chance);
+                
+                //Mekanism
+                ComposterBlock.CHANCES.put(ItemInit.SEED_MEK_QIO_DRIVE.get(), chance);
+                ComposterBlock.CHANCES.put(ItemInit.SEED_MEK_QIO_HYPER_DRIVE.get(), chance);
+                ComposterBlock.CHANCES.put(ItemInit.SEED_MEK_QIO_TIME_DRIVE.get(), chance);
+                ComposterBlock.CHANCES.put(ItemInit.SEED_MEK_QIO_SUPER_DRIVE.get(), chance);
 
 
             }
     	});
     }
     
+    
+    
     private void clientSetup(final FMLClientSetupEvent event)
 	{	
+    	//AE2
     	RenderTypeLookup.setRenderLayer(BlockInit.CROP_128CUBED_DISK.get(), RenderType.getCutout()); 
     	RenderTypeLookup.setRenderLayer(BlockInit.CROP_16CUBED_DISK.get(), RenderType.getCutout()); 
     	RenderTypeLookup.setRenderLayer(BlockInit.CROP_2CUBED_DISK.get(), RenderType.getCutout()); 
@@ -229,11 +257,15 @@ public class GrowableCellsMod
     	RenderTypeLookup.setRenderLayer(BlockInit.CROP_AE2_FLUID_16K_DISK.get(), RenderType.getCutout()); 
     	RenderTypeLookup.setRenderLayer(BlockInit.CROP_AE2_FLUID_1K_DISK.get(), RenderType.getCutout()); 
     	RenderTypeLookup.setRenderLayer(BlockInit.CROP_AE2_FLUID_4K_DISK.get(), RenderType.getCutout()); 
-    	RenderTypeLookup.setRenderLayer(BlockInit.CROP_AE2_FLUID_64K_DISK.get(), RenderType.getCutout()); 
+    	RenderTypeLookup.setRenderLayer(BlockInit.CROP_AE2_FLUID_64K_DISK.get(), RenderType.getCutout());
+    	
+    	//Refined Storage
     	RenderTypeLookup.setRenderLayer(BlockInit.CROP_RS_16K_DISK.get(), RenderType.getCutout()); 
     	RenderTypeLookup.setRenderLayer(BlockInit.CROP_RS_1K_DISK.get(), RenderType.getCutout()); 
     	RenderTypeLookup.setRenderLayer(BlockInit.CROP_RS_4K_DISK.get(), RenderType.getCutout()); 
     	RenderTypeLookup.setRenderLayer(BlockInit.CROP_RS_64K_DISK.get(), RenderType.getCutout()); 
+    	
+    	//Refined Storage Extra Disks
     	RenderTypeLookup.setRenderLayer(BlockInit.CROP_RS_ED_1024K_DISK.get(), RenderType.getCutout()); 
     	RenderTypeLookup.setRenderLayer(BlockInit.CROP_RS_ED_1048M_DISK.get(), RenderType.getCutout()); 
     	RenderTypeLookup.setRenderLayer(BlockInit.CROP_RS_ED_16384K_DISK.get(), RenderType.getCutout()); 
@@ -247,6 +279,8 @@ public class GrowableCellsMod
     	RenderTypeLookup.setRenderLayer(BlockInit.CROP_RS_ED_FLUID_65536K_DISK.get(), RenderType.getCutout()); 
     	RenderTypeLookup.setRenderLayer(BlockInit.CROP_RS_ED_FLUID_INFINITE_DISK.get(), RenderType.getCutout()); 
     	RenderTypeLookup.setRenderLayer(BlockInit.CROP_RS_ED_INFINITE_DISK.get(), RenderType.getCutout()); 
+    	
+    	//Refined Storage Extra Storage
     	RenderTypeLookup.setRenderLayer(BlockInit.CROP_RS_ES_1024K_DISK.get(), RenderType.getCutout()); 
     	RenderTypeLookup.setRenderLayer(BlockInit.CROP_RS_ES_16384K_DISK.get(), RenderType.getCutout()); 
     	RenderTypeLookup.setRenderLayer(BlockInit.CROP_RS_ES_256K_DISK.get(), RenderType.getCutout()); 
@@ -258,8 +292,13 @@ public class GrowableCellsMod
     	RenderTypeLookup.setRenderLayer(BlockInit.CROP_RS_FLUID_1024K_DISK.get(), RenderType.getCutout()); 
     	RenderTypeLookup.setRenderLayer(BlockInit.CROP_RS_FLUID_256K_DISK.get(), RenderType.getCutout()); 
     	RenderTypeLookup.setRenderLayer(BlockInit.CROP_RS_FLUID_4096K_DISK.get(), RenderType.getCutout()); 
-    	RenderTypeLookup.setRenderLayer(BlockInit.CROP_RS_FLUID_64K_DISK.get(), RenderType.getCutout()); 
-
+    	RenderTypeLookup.setRenderLayer(BlockInit.CROP_RS_FLUID_64K_DISK.get(), RenderType.getCutout());
+    	
+    	//Mekanism
+    	RenderTypeLookup.setRenderLayer(BlockInit.CROP_MEK_QIO_DRIVE.get(), RenderType.getCutout());
+    	RenderTypeLookup.setRenderLayer(BlockInit.CROP_MEK_QIO_SUPER_DRIVE.get(), RenderType.getCutout());
+    	RenderTypeLookup.setRenderLayer(BlockInit.CROP_MEK_QIO_TIME_DRIVE.get(), RenderType.getCutout());
+    	RenderTypeLookup.setRenderLayer(BlockInit.CROP_MEK_QIO_HYPER_DRIVE.get(), RenderType.getCutout());
 		
 	}
 
