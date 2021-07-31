@@ -21,7 +21,7 @@
                         "item": "extrastorage:disk_65536k_fluid"
                     },
                     "c": {
-                        "item": "minecraft:wheat_seeds"
+                        "tag": "forge:seeds"
                     }
                 },
                 "result": {

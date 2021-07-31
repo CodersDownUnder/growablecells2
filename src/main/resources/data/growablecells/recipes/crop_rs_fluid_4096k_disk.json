@@ -21,7 +21,7 @@
                         "item": "refinedstorage:4096k_fluid_storage_disk"
                     },
                     "c": {
-                        "item": "minecraft:wheat_seeds"
+                        "tag": "forge:seeds"
                     }
                 },
                 "result": {
