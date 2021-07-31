@@ -21,7 +21,7 @@
                         "item": "extrastorage:disk_256k"
                     },
                     "c": {
-                        "item": "minecraft:wheat_seeds"
+                        "tag": "forge:seeds"
                     }
                 },
                 "result": {

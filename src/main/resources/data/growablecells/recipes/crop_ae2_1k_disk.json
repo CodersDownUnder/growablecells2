@@ -21,7 +21,7 @@
                         "item": "appliedenergistics2:1k_storage_cell"
                     },
                     "c": {
-                        "item": "minecraft:wheat_seeds"
+                        "tag": "forge:seeds"
                     }
                 },
                 "result": {
