@@ -26,12 +26,14 @@ public class GrowableCellsMod
 	public static GrowableCellsItemGroup GROWABLE_CELLS_ITEM_GROUP;
 	
 	public static Boolean AE2Loaded;
+	public static Boolean AE2StuffLoaded;
 	
 	public static Boolean RSLoaded;
 	public static Boolean RSESLoaded;
 	public static Boolean RSEDLoaded;
 	
 	public static Boolean MEKLoaded;
+	
 	
 	public static final Logger LOGGER = LogManager.getLogger();
 
@@ -52,6 +54,7 @@ public class GrowableCellsMod
         GROWABLE_CELLS_ITEM_GROUP = new GrowableCellsItemGroup("growablecells");
         
         AE2Loaded = ModList.get().isLoaded("appliedenergistics2");
+        AE2StuffLoaded = ModList.get().isLoaded("ae2extras");
         RSLoaded = ModList.get().isLoaded("refinedstorage");
         RSEDLoaded = ModList.get().isLoaded("extradisks");
         RSESLoaded = ModList.get().isLoaded("extrastorage");
@@ -91,6 +94,28 @@ public class GrowableCellsMod
     		GrowableCellsModFlags.setFlag(GrowableCellsModFlags.FLAG_AE2_FLUID_4K_DISK, false);
     		GrowableCellsModFlags.setFlag(GrowableCellsModFlags.FLAG_AE2_FLUID_16K_DISK, false);
     		GrowableCellsModFlags.setFlag(GrowableCellsModFlags.FLAG_AE2_FLUID_64K_DISK, false);
+    	}
+    	
+    	if (AE2StuffLoaded) {
+    	    GrowableCellsModFlags.setFlag(GrowableCellsModFlags.FLAG_AE2STUFF_256K_CELL, true);
+    	    GrowableCellsModFlags.setFlag(GrowableCellsModFlags.FLAG_AE2STUFF_1M_CELL, true);
+    	    GrowableCellsModFlags.setFlag(GrowableCellsModFlags.FLAG_AE2STUFF_4M_CELL, true);
+    	    GrowableCellsModFlags.setFlag(GrowableCellsModFlags.FLAG_AE2STUFF_16M_CELL, true);
+    	    
+    	    GrowableCellsModFlags.setFlag(GrowableCellsModFlags.FLAG_AE2STUFF_256K_FLUID_CELL, true);
+    	    GrowableCellsModFlags.setFlag(GrowableCellsModFlags.FLAG_AE2STUFF_1M_FLUID_CELL, true);
+    	    GrowableCellsModFlags.setFlag(GrowableCellsModFlags.FLAG_AE2STUFF_4M_FLUID_CELL, true);
+    	    GrowableCellsModFlags.setFlag(GrowableCellsModFlags.FLAG_AE2STUFF_16M_FLUID_CELL, true);
+    	} else {
+    	    GrowableCellsModFlags.setFlag(GrowableCellsModFlags.FLAG_AE2STUFF_256K_CELL, false);
+            GrowableCellsModFlags.setFlag(GrowableCellsModFlags.FLAG_AE2STUFF_1M_CELL, false);
+            GrowableCellsModFlags.setFlag(GrowableCellsModFlags.FLAG_AE2STUFF_4M_CELL, false);
+            GrowableCellsModFlags.setFlag(GrowableCellsModFlags.FLAG_AE2STUFF_16M_CELL, false);
+            
+            GrowableCellsModFlags.setFlag(GrowableCellsModFlags.FLAG_AE2STUFF_256K_FLUID_CELL, false);
+            GrowableCellsModFlags.setFlag(GrowableCellsModFlags.FLAG_AE2STUFF_1M_FLUID_CELL, false);
+            GrowableCellsModFlags.setFlag(GrowableCellsModFlags.FLAG_AE2STUFF_4M_FLUID_CELL, false);
+            GrowableCellsModFlags.setFlag(GrowableCellsModFlags.FLAG_AE2STUFF_16M_FLUID_CELL, false);
     	}
     	
     	//Refined Storage
@@ -197,6 +222,17 @@ public class GrowableCellsMod
                 ComposterBlock.CHANCES.put(ItemInit.SEED_AE2_FLUID_16K_DISK.get(), chance);
                 ComposterBlock.CHANCES.put(ItemInit.SEED_AE2_FLUID_64K_DISK.get(), chance);
                 
+                //AE2 Stuff
+                ComposterBlock.CHANCES.put(ItemInit.SEED_AE2STUFF_256K_DISK.get(), chance);
+                ComposterBlock.CHANCES.put(ItemInit.SEED_AE2STUFF_1M_DISK.get(), chance);
+                ComposterBlock.CHANCES.put(ItemInit.SEED_AE2STUFF_4M_DISK.get(), chance);
+                ComposterBlock.CHANCES.put(ItemInit.SEED_AE2STUFF_16M_DISK.get(), chance);
+                
+                ComposterBlock.CHANCES.put(ItemInit.SEED_AE2STUFF_256K_FLUID_DISK.get(), chance);
+                ComposterBlock.CHANCES.put(ItemInit.SEED_AE2STUFF_1M_FLUID_DISK.get(), chance);
+                ComposterBlock.CHANCES.put(ItemInit.SEED_AE2STUFF_4M_FLUID_DISK.get(), chance);
+                ComposterBlock.CHANCES.put(ItemInit.SEED_AE2STUFF_16M_FLUID_DISK.get(), chance);
+                
                 //Refined Storage
                 ComposterBlock.CHANCES.put(ItemInit.SEED_RS_1K_DISK.get(), chance);
                 ComposterBlock.CHANCES.put(ItemInit.SEED_RS_4K_DISK.get(), chance);
@@ -258,6 +294,17 @@ public class GrowableCellsMod
     	RenderTypeLookup.setRenderLayer(BlockInit.CROP_AE2_FLUID_1K_DISK.get(), RenderType.getCutout()); 
     	RenderTypeLookup.setRenderLayer(BlockInit.CROP_AE2_FLUID_4K_DISK.get(), RenderType.getCutout()); 
     	RenderTypeLookup.setRenderLayer(BlockInit.CROP_AE2_FLUID_64K_DISK.get(), RenderType.getCutout());
+    	
+    	//AE2 Stuff
+    	RenderTypeLookup.setRenderLayer(BlockInit.CROP_AE2STUFF_256K_DISK.get(), RenderType.getCutout()); 
+        RenderTypeLookup.setRenderLayer(BlockInit.CROP_AE2STUFF_1M_DISK.get(), RenderType.getCutout()); 
+        RenderTypeLookup.setRenderLayer(BlockInit.CROP_AE2STUFF_4M_DISK.get(), RenderType.getCutout()); 
+        RenderTypeLookup.setRenderLayer(BlockInit.CROP_AE2STUFF_16M_DISK.get(), RenderType.getCutout());
+        
+        RenderTypeLookup.setRenderLayer(BlockInit.CROP_AE2STUFF_256K_FLUID_DISK.get(), RenderType.getCutout()); 
+        RenderTypeLookup.setRenderLayer(BlockInit.CROP_AE2STUFF_1M_FLUID_DISK.get(), RenderType.getCutout()); 
+        RenderTypeLookup.setRenderLayer(BlockInit.CROP_AE2STUFF_4M_FLUID_DISK.get(), RenderType.getCutout()); 
+        RenderTypeLookup.setRenderLayer(BlockInit.CROP_AE2STUFF_16M_FLUID_DISK.get(), RenderType.getCutout());
     	
     	//Refined Storage
     	RenderTypeLookup.setRenderLayer(BlockInit.CROP_RS_16K_DISK.get(), RenderType.getCutout()); 

@@ -36,7 +36,22 @@ public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(For
 	public static final RegistryObject<Block> CROP_AE2_FLUID_4K_DISK = BLOCKS.register("crop_ae2_fluid_4k_disk", () -> new SingleCropBlock(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.PLANT)));
 	public static final RegistryObject<Block> CROP_AE2_FLUID_16K_DISK = BLOCKS.register("crop_ae2_fluid_16k_disk", () -> new SingleCropBlock(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.PLANT)));
 	public static final RegistryObject<Block> CROP_AE2_FLUID_64K_DISK = BLOCKS.register("crop_ae2_fluid_64k_disk", () -> new SingleCropBlock(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.PLANT)));
-		
+	
+   /*
+    *===================================================================================================================================
+    * AE2 Extras Disks
+    *===================================================================================================================================
+    */
+	public static final RegistryObject<Block> CROP_AE2STUFF_256K_DISK = BLOCKS.register("crop_ae2stuff_256k_disk", () -> new SingleCropBlock(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.PLANT)));
+    public static final RegistryObject<Block> CROP_AE2STUFF_1M_DISK = BLOCKS.register("crop_ae2stuff_1m_disk", () -> new SingleCropBlock(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.PLANT)));
+    public static final RegistryObject<Block> CROP_AE2STUFF_4M_DISK = BLOCKS.register("crop_ae2stuff_4m_disk", () -> new SingleCropBlock(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.PLANT)));
+    public static final RegistryObject<Block> CROP_AE2STUFF_16M_DISK = BLOCKS.register("crop_ae2stuff_16m_disk", () -> new SingleCropBlock(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.PLANT)));
+    
+    public static final RegistryObject<Block> CROP_AE2STUFF_256K_FLUID_DISK = BLOCKS.register("crop_ae2stuff_256k_fluid_disk", () -> new SingleCropBlock(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.PLANT)));
+    public static final RegistryObject<Block> CROP_AE2STUFF_1M_FLUID_DISK = BLOCKS.register("crop_ae2stuff_1m_fluid_disk", () -> new SingleCropBlock(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.PLANT)));
+    public static final RegistryObject<Block> CROP_AE2STUFF_4M_FLUID_DISK = BLOCKS.register("crop_ae2stuff_4m_fluid_disk", () -> new SingleCropBlock(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.PLANT)));
+    public static final RegistryObject<Block> CROP_AE2STUFF_16M_FLUID_DISK = BLOCKS.register("crop_ae2stuff_16m_fluid_disk", () -> new SingleCropBlock(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.PLANT)));
+    
 	
 	/*
 	 *===================================================================================================================================

@@ -40,6 +40,22 @@ public class GrowableCellsModFlags {
     
     /*
      *===================================================================================================================================
+     * AE2 Stuff
+     *===================================================================================================================================
+     */
+     public static String FLAG_AE2STUFF_256K_CELL = "ae2stuff_256k_cell";
+     public static String FLAG_AE2STUFF_1M_CELL = "ae2stuff_1m_cell";
+     public static String FLAG_AE2STUFF_4M_CELL = "ae2stuff_4m_cell";
+     public static String FLAG_AE2STUFF_16M_CELL = "ae2stuff_16m_cell";
+     
+     public static String FLAG_AE2STUFF_256K_FLUID_CELL = "ae2stuff_256k_fluid_cell";
+     public static String FLAG_AE2STUFF_1M_FLUID_CELL = "ae2stuff_1m_fluid_cell";
+     public static String FLAG_AE2STUFF_4M_FLUID_CELL = "ae2stuff_4m_fluid_cell";
+     public static String FLAG_AE2STUFF_16M_FLUID_CELL = "ae2stuff_16m_fluid_cell";
+     
+    
+    /*
+     *===================================================================================================================================
      * Refined Storage
      *===================================================================================================================================
      */

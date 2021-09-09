@@ -8,6 +8,15 @@
   "block.growablecells.crop_rs_es_fluid_262144k_disk": "Extra Storage Fluid 262144K Disk Seed",
   "block.growablecells.crop_rs_es_fluid_1048576k_disk": "Extra Storage Fluid 1048576K Disk Seed",
   
+  "block.growablecells.crop_ae2stuff_256k_disk": "AE2 Extras 256k Storage Cell Seed",
+  "block.growablecells.crop_ae2stuff_1m_disk": "AE2 Extras 1m Storage Cell Seed",
+  "block.growablecells.crop_ae2stuff_4m_disk": "AE2 Extras 4m Storage Cell Seed",
+  "block.growablecells.crop_ae2stuff_16m_disk": "AE2 Extras 16m Storage Cell Seed",
+  "block.growablecells.crop_ae2stuff_256k_fluid_disk": "AE2 Extras 256k Fluid Storage Cell Seed",
+  "block.growablecells.crop_ae2stuff_1m_fluid_disk": "AE2 Extras 1m Fluid Storage Cell Seed",
+  "block.growablecells.crop_ae2stuff_4m_fluid_disk": "AE2 Extras 4m Fluid Storage Cell Seed",
+  "block.growablecells.crop_ae2stuff_16m_fluid_disk": "AE2 Extras 16m Fluid Storage Cell Seed",
+  
   "block.growablecells.crop_rs_ed_256k_disk": "Extra Disks 256K Disk Seed",
   "block.growablecells.crop_rs_ed_1024k_disk": "Extra Disks 1024K Disk Seed",
   "block.growablecells.crop_rs_ed_4096k_disk": "Extra Disks 4096K Disk Seed",

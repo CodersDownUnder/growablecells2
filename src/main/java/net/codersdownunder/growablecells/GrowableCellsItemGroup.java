@@ -50,6 +50,18 @@ public class GrowableCellsItemGroup extends ItemGroup {
 				  items.add(new ItemStack(ItemInit.SEED_AE2_FLUID_64K_DISK.get()));
 			  }
 			  
+			  if (GrowableCellsMod.AE2StuffLoaded) {
+			      items.add(new ItemStack(ItemInit.SEED_AE2STUFF_256K_DISK.get()));
+			      items.add(new ItemStack(ItemInit.SEED_AE2STUFF_1M_DISK.get()));
+			      items.add(new ItemStack(ItemInit.SEED_AE2STUFF_4M_DISK.get()));
+			      items.add(new ItemStack(ItemInit.SEED_AE2STUFF_16M_DISK.get()));
+			      
+			      items.add(new ItemStack(ItemInit.SEED_AE2STUFF_256K_FLUID_DISK.get()));
+                  items.add(new ItemStack(ItemInit.SEED_AE2STUFF_1M_FLUID_DISK.get()));
+                  items.add(new ItemStack(ItemInit.SEED_AE2STUFF_4M_FLUID_DISK.get()));
+                  items.add(new ItemStack(ItemInit.SEED_AE2STUFF_16M_FLUID_DISK.get()));
+			  }
+			  
 			  if (GrowableCellsMod.RSLoaded) {
 				  items.add(new ItemStack(ItemInit.SEED_RS_1K_DISK.get()));
 				  items.add(new ItemStack(ItemInit.SEED_RS_4K_DISK.get()));

@@ -37,6 +37,25 @@ public class ItemInit {
 	
 	
 	/*
+     *===================================================================================================================================
+     * AE2 Extras Disks
+     *===================================================================================================================================
+     */
+
+    //Normal
+    public static final RegistryObject<Item> SEED_AE2STUFF_256K_DISK = ITEMS.register("seed_ae2stuff_256k_disk", () -> new BlockItem(BlockInit.CROP_AE2STUFF_256K_DISK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SEED_AE2STUFF_1M_DISK = ITEMS.register("seed_ae2stuff_1m_disk", () -> new BlockItem(BlockInit.CROP_AE2STUFF_1M_DISK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SEED_AE2STUFF_4M_DISK = ITEMS.register("seed_ae2stuff_4m_disk", () -> new BlockItem(BlockInit.CROP_AE2STUFF_4M_DISK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SEED_AE2STUFF_16M_DISK = ITEMS.register("seed_ae2stuff_16m_disk", () -> new BlockItem(BlockInit.CROP_AE2STUFF_16M_DISK.get(), new Item.Properties()));
+    
+    //Fluid
+    public static final RegistryObject<Item> SEED_AE2STUFF_256K_FLUID_DISK = ITEMS.register("seed_ae2stuff_256k_fluid_disk", () -> new BlockItem(BlockInit.CROP_AE2STUFF_256K_FLUID_DISK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SEED_AE2STUFF_1M_FLUID_DISK = ITEMS.register("seed_ae2stuff_1m_fluid_disk", () -> new BlockItem(BlockInit.CROP_AE2STUFF_1M_FLUID_DISK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SEED_AE2STUFF_4M_FLUID_DISK = ITEMS.register("seed_ae2stuff_4m_fluid_disk", () -> new BlockItem(BlockInit.CROP_AE2STUFF_4M_FLUID_DISK.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SEED_AE2STUFF_16M_FLUID_DISK = ITEMS.register("seed_ae2stuff_16m_fluid_disk", () -> new BlockItem(BlockInit.CROP_AE2STUFF_16M_FLUID_DISK.get(), new Item.Properties()));
+    
+	
+	/*
 	 *===================================================================================================================================
 	 * RS Disks
 	 *===================================================================================================================================

@@ -2,15 +2,11 @@ package net.codersdownunder.growablecells.blocks;
 
 import java.util.List;
 
-import net.codersdownunder.growablecells.init.BlockInit;
-import net.codersdownunder.growablecells.init.ItemInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropsBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.loot.LootContext.Builder;
-import net.minecraft.util.IItemProvider;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
@@ -39,8 +35,9 @@ public class SingleCropBlock extends CropsBlock {
 		return super.getDrops(state, builder);
 	}
 
-	@Override
+	/*@Override
 	protected IItemProvider getSeedsItem() {
+	    
 		if (this.getBlock() == BlockInit.CROP_128CUBED_DISK.get()) {
 			return ItemInit.SEED_128CUBED_DISK.get();
 		} else if (this.getBlock() == BlockInit.CROP_16CUBED_DISK.get()) {
@@ -113,11 +110,20 @@ public class SingleCropBlock extends CropsBlock {
 			return ItemInit.SEED_RS_FLUID_4096K_DISK.get();
 		}else if (this.getBlock() == BlockInit.CROP_RS_FLUID_64K_DISK.get()) {
 			return ItemInit.SEED_RS_FLUID_64K_DISK.get();
-		} else {
+		}else if (this.getBlock() == BlockInit.CROP_AE2_16K_DISK.get()) {
+            return ItemInit.SEED_AE2st.get();
+        }else if (this.getBlock() == BlockInit.CROP_AE2_1K_DISK.get()) {
+            return ItemInit.SEED_AE2_1K_DISK.get();
+        }else if (this.getBlock() == BlockInit.CROP_AE2_4K_DISK.get()) {
+            return ItemInit.SEED_AE2_4K_DISK.get();
+        }else if (this.getBlock() == BlockInit.CROP_AE2_64K_DISK.get()) {
+            return ItemInit.SEED_AE2_64K_DISK.get();
+        } else {
 			return Items.PAPER;
 		}
-	}
-
+	}*/
+	
+	
 	@Override
 	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
 		return SHAPE_BY_AGE[state.get(this.getAgeProperty())];

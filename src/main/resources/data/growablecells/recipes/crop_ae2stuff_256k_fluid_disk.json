@@ -1,0 +1,33 @@
+{
+    "type": "forge:conditional",
+    "recipes": [
+        {
+            "conditions": [
+                {
+                    "flag": "ae2stuff_256k_fluid_disk",
+                    "type": "growablecells:flag"
+                }
+            ],
+            "recipe": {
+                "type": "minecraft:crafting_shaped",
+                "group": "growablecells:ae2stuff",
+                "pattern": [
+                    " x ",
+                    "xcx",
+                    " x "
+                ],
+                "key": {
+                    "x": {
+                        "item": "ae2extras:256k_fluid_storage_cell"
+                    },
+                    "c": {
+                        "tag": "forge:seeds"
+                    }
+                },
+                "result": {
+                    "item": "growablecells:seed_ae2stuff_256k_fluid_disk"
+                }
+            }
+        }
+    ]
+}

@@ -38,20 +38,14 @@ minecraft {
 
     // Default run configurations.
     // These can be tweaked, removed, or duplicated as needed.
-    runs {
+   runs {
         client {
-            workingDirectory project.file('run')
+            workingDirectory project.file('../run')
 
             // Recommended logging data for a userdev environment
-            // The markers can be changed as needed. 
-            // "SCAN": For mods scan.
-            // "REGISTRIES": For firing of registry events.
-            // "REGISTRYDUMP": For getting the contents of all registries.
-            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
 
             // Recommended logging level for the console
-            // You can set various levels here.
-            // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
             property 'forge.logging.console.level', 'debug'
 
             mods {
@@ -62,18 +56,12 @@ minecraft {
         }
 
         server {
-            workingDirectory project.file('run')
+            workingDirectory project.file('../serverrun')
 
             // Recommended logging data for a userdev environment
-            // The markers can be changed as needed. 
-            // "SCAN": For mods scan.
-            // "REGISTRIES": For firing of registry events.
-            // "REGISTRYDUMP": For getting the contents of all registries.
-            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
 
             // Recommended logging level for the console
-            // You can set various levels here.
-            // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
             property 'forge.logging.console.level', 'debug'
 
             mods {
@@ -84,22 +72,15 @@ minecraft {
         }
 
         data {
-            workingDirectory project.file('run')
+            workingDirectory project.file('../run')
 
             // Recommended logging data for a userdev environment
-            // The markers can be changed as needed. 
-            // "SCAN": For mods scan.
-            // "REGISTRIES": For firing of registry events.
-            // "REGISTRYDUMP": For getting the contents of all registries.
-            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
 
             // Recommended logging level for the console
-            // You can set various levels here.
-            // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
             property 'forge.logging.console.level', 'debug'
 
-            // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/')
 
             mods {
                 examplemod {
@@ -152,6 +133,8 @@ dependencies {
 	compile fg.deobf("appeng:appliedenergistics2:${ae2_version}")
 	compile fg.deobf("curse.maven:extracells-351491:3173951")
 	compile fg.deobf("curse.maven:extracells-410168:3179402")
+	compile fg.deobf("net.darkhax.bookshelf:Bookshelf-1.16.5:10.0.1")
+    compile fg.deobf("net.darkhax.botanybots:BotanyPots-1.16.5:7.0.1")
 
     // Specify the version of Minecraft to use, If this is any group other then 'net.minecraft' it is assumed
     // that the dep is a ForgeGradle 'patcher' dependency. And it's patches will be applied.
