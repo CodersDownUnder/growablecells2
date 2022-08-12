@@ -1,39 +1,46 @@
 package net.codersdownunder.growablecells;
 
 import net.codersdownunder.growablecells.init.ItemInit;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.core.NonNullList;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.registries.ForgeRegistries;
 
-public class GrowableCellsItemGroup extends ItemGroup {
+public class GrowableCellsItemGroup extends CreativeModeTab {
 
 		  public GrowableCellsItemGroup(String label) {
 		    super(label);
 		    label = "flowerseeds";
 		  }
-
+			@Override
+			public ItemStack makeIcon() {
+				if (GrowableCellsMod.AE2Loaded) {
+					return new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("appliedenergistics2:1k_storage_cell")));
+				}
+				
+				if (GrowableCellsMod.RSLoaded) {
+					return new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("refinedstorage:1k_storage_disk")));
+				}
+				
+				if (GrowableCellsMod.MEKLoaded) {
+					return new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("mekanism:qio_drive_base")));
+				}
+				
+				return new ItemStack(Items.BARRIER);
+			}
+		
 		  @Override
-		  public ItemStack createIcon() {
-			if (GrowableCellsMod.AE2Loaded) {
-				return new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("appliedenergistics2:1k_storage_cell")));
-			}
-			
-			if (GrowableCellsMod.RSLoaded) {
-				return new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("refinedstorage:1k_storage_disk")));
-			}
-			
-			if (GrowableCellsMod.MEKLoaded) {
-				return new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("mekanism:qio_drive_base")));
-			}
-			
-			return new ItemStack(Items.BARRIER);
-		  }
-
-		  public void fill(NonNullList<ItemStack> items)
+		  public void fillItemList(NonNullList<ItemStack> items)
 		  {
+//			  GrowableCellsMod.LOGGER.info(GrowableCellsMod.AE2Loaded);
+//			  GrowableCellsMod.LOGGER.info(GrowableCellsMod.AE2StuffLoaded);
+//			  GrowableCellsMod.LOGGER.info(GrowableCellsMod.MEKLoaded);
+//			  GrowableCellsMod.LOGGER.info(GrowableCellsMod.RSLoaded);
+//			  GrowableCellsMod.LOGGER.info(GrowableCellsMod.RSEDLoaded);
+//			  GrowableCellsMod.LOGGER.info(GrowableCellsMod.RSESLoaded);
+			  
 			  if (GrowableCellsMod.AE2Loaded) {
 				  items.add(new ItemStack(ItemInit.SEED_AE2_1K_DISK.get()));
 				  items.add(new ItemStack(ItemInit.SEED_AE2_4K_DISK.get()));
@@ -102,13 +109,16 @@ public class GrowableCellsItemGroup extends ItemGroup {
 				  items.add(new ItemStack(ItemInit.SEED_RS_ES_FLUID_262144K_DISK.get()));
 				  items.add(new ItemStack(ItemInit.SEED_RS_ES_FLUID_1048576K_DISK.get()));
 			  }
-			  
+			  			
 			  if (GrowableCellsMod.MEKLoaded) {
 				  items.add(new ItemStack(ItemInit.SEED_MEK_QIO_DRIVE.get()));
 				  items.add(new ItemStack(ItemInit.SEED_MEK_QIO_HYPER_DRIVE.get()));
 				  items.add(new ItemStack(ItemInit.SEED_MEK_QIO_TIME_DRIVE.get()));
 				  items.add(new ItemStack(ItemInit.SEED_MEK_QIO_SUPER_DRIVE.get()));
 			  }
+			  
 		  }
+
+
 
 }

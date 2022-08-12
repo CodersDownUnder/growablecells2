@@ -1,22 +1,29 @@
 buildscript {
     repositories {
-        maven { url = 'https://files.minecraftforge.net/maven' }
+        // These repositories are only for Gradle plugins, put any other repositories in the repository block further below
+        maven { url = 'https://maven.minecraftforge.net' }
+        maven { url = 'https://maven.parchmentmc.org' }
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '4.1.+', changing: true
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        classpath 'org.parchmentmc:librarian:1.+'
     }
 }
-apply plugin: 'net.minecraftforge.gradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
-apply plugin: 'eclipse'
-apply plugin: 'maven-publish'
+plugins {
+    id 'eclipse'
+    id 'maven-publish'
+}
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'org.parchmentmc.librarian.forgegradle'
+
 
 version = "${mc_version}-${mod_version}"
 group = 'net.codersdownunder.growablecells' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'growablecells'
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(8) // Mojang ships Java 8 to end users, so your mod should target Java 8.
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 minecraft {
@@ -31,7 +38,7 @@ minecraft {
     //
     // Use non-default mappings at your own risk. they may not always work.
     // Simply re-run your setup task after changing the mappings to update your workspace.
-       mappings channel: 'snapshot', version: '20201028-1.16.3'
+    mappings channel: 'parchment', version: "${parchment_version}"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
     
     // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
@@ -41,6 +48,9 @@ minecraft {
    runs {
         client {
             workingDirectory project.file('../run')
+
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
 
             // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
@@ -57,6 +67,9 @@ minecraft {
 
         server {
             workingDirectory project.file('../serverrun')
+
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
 
             // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
@@ -100,41 +113,59 @@ repositories {
         url 'https://maven.tterrag.com/'
     }
     maven {
-        name 'JEI'
-        url 'https://dvs1.progwml6.com/files/maven'
+        // location of the maven that hosts JEI files
+        name = "Progwml6 maven"
+        url = "https://dvs1.progwml6.com/files/maven/"
     }
     maven {
+        // location of a maven mirror for JEI files, as a fallback
+        name = "ModMaven"
+        url = "https://modmaven.dev"
+    }
+      maven {
         name 'RS maven'
-        url 'https://repo.refinedmods.com'
+        url = uri('https://maven.pkg.github.com/refinedmods/refinedstorage')
+        credentials {
+            username = 'anything'
+            password = '\u0067hp_oGjcDFCn8jeTzIj4Ke9pLoEVtpnZMP4VQgaX'
+        }
     }
     maven {
-        name 'Carry On'
-        url 'https://maven.blamejared.com/'
-    }
-	 maven {
         url "https://www.cursemaven.com"
     }
-	maven {
-        name "Modmaven"
-        url "https://modmaven.dev/"
+    maven {
+        url = uri("https://maven.creeperhost.net")
+    }
+    maven {
+        url = "https://maven.theillusivec4.top/"
     }
 }
 
 dependencies {
 	
-  	minecraft 'net.minecraftforge:forge:1.16.5-36.1.3'
+  	minecraft 'net.minecraftforge:forge:1.18.2-40.1.0'
 	
-    compile fg.deobf("com.refinedmods:refinedstorage:${rs_version}")
+    implementation fg.deobf("com.refinedmods:refinedstorage:${rs_version}") {
+        transitive false
+    }
 
-    runtimeOnly fg.deobf("tschipp.carryon:carryon-1.16.3:${co_version}")
-    compileOnly fg.deobf("mcjty.theoneprobe:TheOneProbe-${top_version}:api")
-    runtimeOnly fg.deobf("mcjty.theoneprobe:TheOneProbe-${top_version}")
-    runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:${jei_version}")
-	compile fg.deobf("appeng:appliedenergistics2:${ae2_version}")
-	compile fg.deobf("curse.maven:extracells-351491:3173951")
-	compile fg.deobf("curse.maven:extracells-410168:3179402")
-	compile fg.deobf("net.darkhax.bookshelf:Bookshelf-1.16.5:10.0.1")
-    compile fg.deobf("net.darkhax.botanybots:BotanyPots-1.16.5:7.0.1")
+    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
+	compileOnly fg.deobf("appeng:appliedenergistics2:${ae2_version}")
+ 	compileOnly fg.deobf("curse.maven:extracells-351491:3712914")
+	compileOnly fg.deobf("curse.maven:extracells-410168:3718149")
+	//compile fg.deobf("net.darkhax.bookshelf:Bookshelf-1.16.5:10.0.1")
+    //compile fg.deobf("net.darkhax.botanybots:BotanyPots-1.16.5:7.0.1")
+
+    compileOnly "mekanism:Mekanism:${mekanism_version}:api"
+
+    // If you want to test/use Mekanism & its modules during `runClient` invocation, use the following
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}")// core
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:additions")// Mekanism: Additions
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:generators")// Mekanism: Generators
+    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:tools")
+
+    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
+    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}:api")
 
     // Specify the version of Minecraft to use, If this is any group other then 'net.minecraft' it is assumed
     // that the dep is a ForgeGradle 'patcher' dependency. And it's patches will be applied.
@@ -168,7 +199,7 @@ jar {
             "Specification-Vendor": "examplemodsareus",
             "Specification-Version": "1", // We are version 1 of ourselves
             "Implementation-Title": project.name,
-            "Implementation-Version": '${mod_version}',
+            "Implementation-Version": "${version}",
             "Implementation-Vendor" :"examplemodsareus",
             "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
