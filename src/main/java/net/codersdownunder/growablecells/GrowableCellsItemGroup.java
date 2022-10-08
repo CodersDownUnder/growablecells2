@@ -17,7 +17,7 @@ public class GrowableCellsItemGroup extends CreativeModeTab {
 			@Override
 			public ItemStack makeIcon() {
 				if (GrowableCellsMod.AE2Loaded) {
-					return new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("appliedenergistics2:1k_storage_cell")));
+					return new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("ae2:1k_storage_cell")));
 				}
 				
 				if (GrowableCellsMod.RSLoaded) {
@@ -34,12 +34,7 @@ public class GrowableCellsItemGroup extends CreativeModeTab {
 		  @Override
 		  public void fillItemList(NonNullList<ItemStack> items)
 		  {
-//			  GrowableCellsMod.LOGGER.info(GrowableCellsMod.AE2Loaded);
-//			  GrowableCellsMod.LOGGER.info(GrowableCellsMod.AE2StuffLoaded);
-//			  GrowableCellsMod.LOGGER.info(GrowableCellsMod.MEKLoaded);
-//			  GrowableCellsMod.LOGGER.info(GrowableCellsMod.RSLoaded);
-//			  GrowableCellsMod.LOGGER.info(GrowableCellsMod.RSEDLoaded);
-//			  GrowableCellsMod.LOGGER.info(GrowableCellsMod.RSESLoaded);
+			  items.clear();
 			  
 			  if (GrowableCellsMod.AE2Loaded) {
 				  items.add(new ItemStack(ItemInit.SEED_AE2_1K_DISK.get()));
@@ -57,18 +52,18 @@ public class GrowableCellsItemGroup extends CreativeModeTab {
 				  items.add(new ItemStack(ItemInit.SEED_AE2_FLUID_64K_DISK.get()));
 			  }
 			  
-			  if (GrowableCellsMod.AE2StuffLoaded) {
-			      items.add(new ItemStack(ItemInit.SEED_AE2STUFF_256K_DISK.get()));
-			      items.add(new ItemStack(ItemInit.SEED_AE2STUFF_1M_DISK.get()));
-			      items.add(new ItemStack(ItemInit.SEED_AE2STUFF_4M_DISK.get()));
-			      items.add(new ItemStack(ItemInit.SEED_AE2STUFF_16M_DISK.get()));
-			      
-			      items.add(new ItemStack(ItemInit.SEED_AE2STUFF_256K_FLUID_DISK.get()));
-                  items.add(new ItemStack(ItemInit.SEED_AE2STUFF_1M_FLUID_DISK.get()));
-                  items.add(new ItemStack(ItemInit.SEED_AE2STUFF_4M_FLUID_DISK.get()));
-                  items.add(new ItemStack(ItemInit.SEED_AE2STUFF_16M_FLUID_DISK.get()));
-			  }
-			  
+//			  if (GrowableCellsMod.AE2StuffLoaded) {
+//			      items.add(new ItemStack(ItemInit.SEED_AE2STUFF_256K_DISK.get()));
+//			      items.add(new ItemStack(ItemInit.SEED_AE2STUFF_1M_DISK.get()));
+//			      items.add(new ItemStack(ItemInit.SEED_AE2STUFF_4M_DISK.get()));
+//			      items.add(new ItemStack(ItemInit.SEED_AE2STUFF_16M_DISK.get()));
+//
+//			      items.add(new ItemStack(ItemInit.SEED_AE2STUFF_256K_FLUID_DISK.get()));
+//                  items.add(new ItemStack(ItemInit.SEED_AE2STUFF_1M_FLUID_DISK.get()));
+//                  items.add(new ItemStack(ItemInit.SEED_AE2STUFF_4M_FLUID_DISK.get()));
+//                  items.add(new ItemStack(ItemInit.SEED_AE2STUFF_16M_FLUID_DISK.get()));
+//			  }
+//
 			  if (GrowableCellsMod.RSLoaded) {
 				  items.add(new ItemStack(ItemInit.SEED_RS_1K_DISK.get()));
 				  items.add(new ItemStack(ItemInit.SEED_RS_4K_DISK.get()));
@@ -89,13 +84,13 @@ public class GrowableCellsItemGroup extends CreativeModeTab {
 				  items.add(new ItemStack(ItemInit.SEED_RS_ED_65536K_DISK.get()));
 				  items.add(new ItemStack(ItemInit.SEED_RS_ED_262M_DISK.get()));
 				  items.add(new ItemStack(ItemInit.SEED_RS_ED_1048M_DISK.get()));
-				  items.add(new ItemStack(ItemInit.SEED_RS_ED_INFINITE_DISK.get()));
+				  //items.add(new ItemStack(ItemInit.SEED_RS_ED_INFINITE_DISK.get()));
 				  
 				  items.add(new ItemStack(ItemInit.SEED_RS_ED_FLUID_16384K_DISK.get()));
 				  items.add(new ItemStack(ItemInit.SEED_RS_ED_FLUID_65536K_DISK.get()));
 				  items.add(new ItemStack(ItemInit.SEED_RS_ED_FLUID_262M_DISK.get()));
 				  items.add(new ItemStack(ItemInit.SEED_RS_ED_FLUID_1048M_DISK.get()));
-				  items.add(new ItemStack(ItemInit.SEED_RS_ED_FLUID_INFINITE_DISK.get()));
+				  //items.add(new ItemStack(ItemInit.SEED_RS_ED_FLUID_INFINITE_DISK.get()));
 			  }
 			  
 			  if (GrowableCellsMod.RSESLoaded) {

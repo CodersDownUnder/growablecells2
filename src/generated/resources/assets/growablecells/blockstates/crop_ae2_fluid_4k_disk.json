@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "growablecells:block/crop_ae2_fluid_4k_disk_stage_0"
+    },
+    "age=1": {
+      "model": "growablecells:block/crop_ae2_fluid_4k_disk_stage_0"
+    },
+    "age=2": {
+      "model": "growablecells:block/crop_ae2_fluid_4k_disk_stage_1"
+    },
+    "age=3": {
+      "model": "growablecells:block/crop_ae2_fluid_4k_disk_stage_1"
+    },
+    "age=4": {
+      "model": "growablecells:block/crop_ae2_fluid_4k_disk_stage_1"
+    },
+    "age=5": {
+      "model": "growablecells:block/crop_ae2_fluid_4k_disk_stage_2"
+    },
+    "age=6": {
+      "model": "growablecells:block/crop_ae2_fluid_4k_disk_stage_2"
+    },
+    "age=7": {
+      "model": "growablecells:block/crop_ae2_fluid_4k_disk_stage_3"
+    }
+  }
+}

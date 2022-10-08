@@ -3,6 +3,7 @@ package net.codersdownunder.growablecells.blocks;
 
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
@@ -26,8 +27,13 @@ public class SingleCropBlock extends CropBlock {
 	public SingleCropBlock(Properties builder) {
 		super(builder);
 	}
-	
-//	@SuppressWarnings("deprecation")
+
+	@Override
+	public ItemStack getCloneItemStack(BlockGetter pLevel, BlockPos pPos, BlockState pState) {
+		return new ItemStack(this.asItem());
+	}
+
+	//	@SuppressWarnings("deprecation")
 //	@Override
 //	public List<ItemStack> getDrops(BlockState state, Builder builder) {
 //		return super.getDrops(state, builder);

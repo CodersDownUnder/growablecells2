@@ -1,0 +1,44 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "values": [
+            {
+              "modid": "extrastorage",
+              "type": "forge:mod_loaded"
+            },
+            {
+              "value": {
+                "type": "forge:false"
+              },
+              "type": "forge:not"
+            }
+          ],
+          "type": "forge:and"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "group": "growablecells_extrastorage",
+        "pattern": [
+          " a ",
+          "aba",
+          " a "
+        ],
+        "key": {
+          "b": {
+            "tag": "forge:seeds"
+          },
+          "a": {
+            "item": "extrastorage:disk_1024k"
+          }
+        },
+        "result": {
+          "item": "growablecells:seed_rs_es_1024k_disk"
+        }
+      }
+    }
+  ]
+}

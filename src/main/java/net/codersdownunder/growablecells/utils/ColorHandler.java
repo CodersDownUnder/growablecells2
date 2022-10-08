@@ -75,8 +75,8 @@ public class ColorHandler {
 		event.getItemColors().register(Tier5Color, ItemInit.SEED_RS_FLUID_256K_DISK.get());
 		event.getItemColors().register(Tier5Color, ItemInit.SEED_RS_ED_256K_DISK.get());
 		event.getItemColors().register(Tier5Color, ItemInit.SEED_RS_ES_256K_DISK.get());
-		event.getItemColors().register(Tier5Color, ItemInit.SEED_AE2STUFF_256K_DISK.get());
-		event.getItemColors().register(Tier5Color, ItemInit.SEED_AE2STUFF_256K_FLUID_DISK.get());
+//		event.getItemColors().register(Tier5Color, ItemInit.SEED_AE2STUFF_256K_DISK.get());
+//		event.getItemColors().register(Tier5Color, ItemInit.SEED_AE2STUFF_256K_FLUID_DISK.get());
 		
 		//Tier 6
 		final ItemColor Tier6Color = (stack, tintIndex) -> {
@@ -111,8 +111,8 @@ public class ColorHandler {
 		event.getItemColors().register(Tier9Color, ItemInit.SEED_RS_ED_FLUID_65536K_DISK.get());
 		event.getItemColors().register(Tier9Color, ItemInit.SEED_RS_ES_FLUID_65536K_DISK.get());
 		event.getItemColors().register(Tier9Color, ItemInit.SEED_MEK_QIO_DRIVE.get());
-		event.getItemColors().register(Tier9Color, ItemInit.SEED_AE2STUFF_1M_DISK.get());
-        event.getItemColors().register(Tier9Color, ItemInit.SEED_AE2STUFF_1M_FLUID_DISK.get());
+//		event.getItemColors().register(Tier9Color, ItemInit.SEED_AE2STUFF_1M_DISK.get());
+//        event.getItemColors().register(Tier9Color, ItemInit.SEED_AE2STUFF_1M_FLUID_DISK.get());
 		
 		//Tier 10
 		final ItemColor Tier10Color = (stack, tintIndex) -> {
@@ -122,8 +122,8 @@ public class ColorHandler {
 		event.getItemColors().register(Tier10Color, ItemInit.SEED_RS_ED_FLUID_262M_DISK.get());
 		event.getItemColors().register(Tier10Color, ItemInit.SEED_RS_ES_FLUID_262144K_DISK.get());
 		event.getItemColors().register(Tier10Color, ItemInit.SEED_MEK_QIO_HYPER_DRIVE.get());
-		event.getItemColors().register(Tier10Color, ItemInit.SEED_AE2STUFF_4M_DISK.get());
-        event.getItemColors().register(Tier10Color, ItemInit.SEED_AE2STUFF_4M_FLUID_DISK.get());
+//		event.getItemColors().register(Tier10Color, ItemInit.SEED_AE2STUFF_4M_DISK.get());
+//        event.getItemColors().register(Tier10Color, ItemInit.SEED_AE2STUFF_4M_FLUID_DISK.get());
 		
 		//Tier 11
 		final ItemColor Tier11Color = (stack, tintIndex) -> {
@@ -133,15 +133,15 @@ public class ColorHandler {
 		event.getItemColors().register(Tier11Color, ItemInit.SEED_RS_ED_FLUID_1048M_DISK.get());
 		event.getItemColors().register(Tier11Color, ItemInit.SEED_RS_ES_FLUID_1048576K_DISK.get());
 		event.getItemColors().register(Tier11Color, ItemInit.SEED_MEK_QIO_TIME_DRIVE.get());
-		event.getItemColors().register(Tier11Color, ItemInit.SEED_AE2STUFF_16M_DISK.get());
-        event.getItemColors().register(Tier11Color, ItemInit.SEED_AE2STUFF_16M_FLUID_DISK.get());
+//		event.getItemColors().register(Tier11Color, ItemInit.SEED_AE2STUFF_16M_DISK.get());
+//        event.getItemColors().register(Tier11Color, ItemInit.SEED_AE2STUFF_16M_FLUID_DISK.get());
 		
 		//Tier 12
 		final ItemColor Tier12Color = (stack, tintIndex) -> {
 			return 0x1D1D21;
 		};
-		event.getItemColors().register(Tier12Color, ItemInit.SEED_RS_ED_INFINITE_DISK.get());
-		event.getItemColors().register(Tier12Color, ItemInit.SEED_RS_ED_FLUID_INFINITE_DISK.get());
+		//event.getItemColors().register(Tier12Color, ItemInit.SEED_RS_ED_INFINITE_DISK.get());
+		//event.getItemColors().register(Tier12Color, ItemInit.SEED_RS_ED_FLUID_INFINITE_DISK.get());
 		event.getItemColors().register(Tier12Color, ItemInit.SEED_MEK_QIO_SUPER_DRIVE.get());
 	}
 

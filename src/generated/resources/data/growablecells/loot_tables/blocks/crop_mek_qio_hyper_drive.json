@@ -1,0 +1,68 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "growablecells:optional_item",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "growablecells:crop_mek_qio_hyper_drive",
+                  "properties": {
+                    "age": "7"
+                  }
+                }
+              ],
+              "name": "mekanism:qio_drive_hyper_dense"
+            },
+            {
+              "type": "growablecells:optional_item",
+              "name": "growablecells:seed_mek_qio_hyper_drive"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1.0,
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "growablecells:optional_item",
+          "functions": [
+            {
+              "function": "minecraft:apply_bonus",
+              "enchantment": "minecraft:fortune",
+              "formula": "minecraft:binomial_with_bonus_count",
+              "parameters": {
+                "extra": 2,
+                "probability": 0.5714286
+              }
+            }
+          ],
+          "name": "growablecells:seed_mek_qio_hyper_drive"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "growablecells:crop_mek_qio_hyper_drive",
+          "properties": {
+            "age": "7"
+          }
+        }
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "function": "minecraft:explosion_decay"
+    }
+  ]
+}

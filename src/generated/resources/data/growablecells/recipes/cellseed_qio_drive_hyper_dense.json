@@ -1,0 +1,44 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "values": [
+            {
+              "modid": "mekanism",
+              "type": "forge:mod_loaded"
+            },
+            {
+              "value": {
+                "type": "forge:false"
+              },
+              "type": "forge:not"
+            }
+          ],
+          "type": "forge:and"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "group": "growablecells_mekanism",
+        "pattern": [
+          " a ",
+          "aba",
+          " a "
+        ],
+        "key": {
+          "b": {
+            "tag": "forge:seeds"
+          },
+          "a": {
+            "item": "mekanism:qio_drive_hyper_dense"
+          }
+        },
+        "result": {
+          "item": "growablecells:seed_mek_qio_hyper_drive"
+        }
+      }
+    }
+  ]
+}

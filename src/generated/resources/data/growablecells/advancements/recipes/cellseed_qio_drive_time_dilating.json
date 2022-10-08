@@ -1,0 +1,57 @@
+{
+  "advancements": [
+    {
+      "conditions": [
+        {
+          "values": [
+            {
+              "modid": "mekanism",
+              "type": "forge:mod_loaded"
+            },
+            {
+              "value": {
+                "type": "forge:false"
+              },
+              "type": "forge:not"
+            }
+          ],
+          "type": "forge:and"
+        }
+      ],
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "rewards": {
+          "recipes": [
+            "growablecells:seed_mek_qio_time_drive"
+          ]
+        },
+        "criteria": {
+          "has_qio_drive_time_dilating": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "mekanism:qio_drive_time_dilating"
+                  ]
+                }
+              ]
+            }
+          },
+          "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+              "recipe": "growablecells:seed_mek_qio_time_drive"
+            }
+          }
+        },
+        "requirements": [
+          [
+            "has_qio_drive_time_dilating",
+            "has_the_recipe"
+          ]
+        ]
+      }
+    }
+  ]
+}

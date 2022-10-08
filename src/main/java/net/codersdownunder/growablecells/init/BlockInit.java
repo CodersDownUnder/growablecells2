@@ -36,21 +36,21 @@ public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(For
 	public static final RegistryObject<Block> CROP_AE2_FLUID_16K_DISK = BLOCKS.register("crop_ae2_fluid_16k_disk", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
 	public static final RegistryObject<Block> CROP_AE2_FLUID_64K_DISK = BLOCKS.register("crop_ae2_fluid_64k_disk", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
 	
-   /*
-    *===================================================================================================================================
-    * AE2 Extras Disks
-    *===================================================================================================================================
-    */
-	public static final RegistryObject<Block> CROP_AE2STUFF_256K_DISK = BLOCKS.register("crop_ae2stuff_256k_disk", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
-    public static final RegistryObject<Block> CROP_AE2STUFF_1M_DISK = BLOCKS.register("crop_ae2stuff_1m_disk", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
-    public static final RegistryObject<Block> CROP_AE2STUFF_4M_DISK = BLOCKS.register("crop_ae2stuff_4m_disk", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
-    public static final RegistryObject<Block> CROP_AE2STUFF_16M_DISK = BLOCKS.register("crop_ae2stuff_16m_disk", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
-    
-    public static final RegistryObject<Block> CROP_AE2STUFF_256K_FLUID_DISK = BLOCKS.register("crop_ae2stuff_256k_fluid_disk", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
-    public static final RegistryObject<Block> CROP_AE2STUFF_1M_FLUID_DISK = BLOCKS.register("crop_ae2stuff_1m_fluid_disk", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
-    public static final RegistryObject<Block> CROP_AE2STUFF_4M_FLUID_DISK = BLOCKS.register("crop_ae2stuff_4m_fluid_disk", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
-    public static final RegistryObject<Block> CROP_AE2STUFF_16M_FLUID_DISK = BLOCKS.register("crop_ae2stuff_16m_fluid_disk", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
-    
+//   /*
+//    *===================================================================================================================================
+//    * AE2 Extras Disks
+//    *===================================================================================================================================
+//    */
+//	public static final RegistryObject<Block> CROP_AE2STUFF_256K_DISK = BLOCKS.register("crop_ae2stuff_256k_disk", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
+//    public static final RegistryObject<Block> CROP_AE2STUFF_1M_DISK = BLOCKS.register("crop_ae2stuff_1m_disk", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
+//    public static final RegistryObject<Block> CROP_AE2STUFF_4M_DISK = BLOCKS.register("crop_ae2stuff_4m_disk", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
+//    public static final RegistryObject<Block> CROP_AE2STUFF_16M_DISK = BLOCKS.register("crop_ae2stuff_16m_disk", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
+//
+//    public static final RegistryObject<Block> CROP_AE2STUFF_256K_FLUID_DISK = BLOCKS.register("crop_ae2stuff_256k_fluid_disk", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
+//    public static final RegistryObject<Block> CROP_AE2STUFF_1M_FLUID_DISK = BLOCKS.register("crop_ae2stuff_1m_fluid_disk", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
+//    public static final RegistryObject<Block> CROP_AE2STUFF_4M_FLUID_DISK = BLOCKS.register("crop_ae2stuff_4m_fluid_disk", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
+//    public static final RegistryObject<Block> CROP_AE2STUFF_16M_FLUID_DISK = BLOCKS.register("crop_ae2stuff_16m_fluid_disk", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
+//
 	
 	/*
 	 *===================================================================================================================================
@@ -86,14 +86,14 @@ public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(For
 	public static final RegistryObject<Block> CROP_RS_ED_65536K_DISK = BLOCKS.register("crop_rs_ed_65536k_disk", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
 	public static final RegistryObject<Block> CROP_RS_ED_262M_DISK = BLOCKS.register("crop_rs_ed_262m_disk", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
 	public static final RegistryObject<Block> CROP_RS_ED_1048M_DISK = BLOCKS.register("crop_rs_ed_1048m_disk", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
-	public static final RegistryObject<Block> CROP_RS_ED_INFINITE_DISK = BLOCKS.register("crop_rs_ed_infinite_disk", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
+	//public static final RegistryObject<Block> CROP_RS_ED_INFINITE_DISK = BLOCKS.register("crop_rs_ed_infinite_disk", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
 	
 	//Fluid
 	public static final RegistryObject<Block> CROP_RS_ED_FLUID_16384K_DISK = BLOCKS.register("crop_rs_ed_fluid_16384k_disk", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
 	public static final RegistryObject<Block> CROP_RS_ED_FLUID_65536K_DISK = BLOCKS.register("crop_rs_ed_fluid_65536k_disk", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
 	public static final RegistryObject<Block> CROP_RS_ED_FLUID_262M_DISK = BLOCKS.register("crop_rs_ed_fluid_262m_disk", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
 	public static final RegistryObject<Block> CROP_RS_ED_FLUID_1048M_DISK = BLOCKS.register("crop_rs_ed_fluid_1048m_disk", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
-	public static final RegistryObject<Block> CROP_RS_ED_FLUID_INFINITE_DISK = BLOCKS.register("crop_rs_ed_fluid_infinite_disk", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
+	//public static final RegistryObject<Block> CROP_RS_ED_FLUID_INFINITE_DISK = BLOCKS.register("crop_rs_ed_fluid_infinite_disk", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
 	
 	/*
 	 *===================================================================================================================================

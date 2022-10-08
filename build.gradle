@@ -3,11 +3,13 @@ buildscript {
         // These repositories are only for Gradle plugins, put any other repositories in the repository block further below
         maven { url = 'https://maven.minecraftforge.net' }
         maven { url = 'https://maven.parchmentmc.org' }
+        maven { url = 'https://repo.spongepowered.org/maven' }
         mavenCentral()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath 'org.parchmentmc:librarian:1.+'
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
     }
 }
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
@@ -17,7 +19,7 @@ plugins {
 }
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
-
+apply plugin: 'org.spongepowered.mixin'
 
 version = "${mc_version}-${mod_version}"
 group = 'net.codersdownunder.growablecells' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
@@ -93,10 +95,11 @@ minecraft {
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
 
-            args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/')
+            args '--all', '--mod', 'growablecells', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+
 
             mods {
-                examplemod {
+                growablecells {
                     source sourceSets.main
                 }
             }
@@ -116,6 +119,10 @@ repositories {
         // location of the maven that hosts JEI files
         name = "Progwml6 maven"
         url = "https://dvs1.progwml6.com/files/maven/"
+    }
+    maven {
+        name = 'BlameJared Maven (CrT / Bookshelf)'
+        url = 'https://maven.blamejared.com'
     }
     maven {
         // location of a maven mirror for JEI files, as a fallback
@@ -143,18 +150,24 @@ repositories {
 
 dependencies {
 	
-  	minecraft 'net.minecraftforge:forge:1.18.2-40.1.0'
+  	minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
 	
     implementation fg.deobf("com.refinedmods:refinedstorage:${rs_version}") {
         transitive false
     }
 
-    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
-	compileOnly fg.deobf("appeng:appliedenergistics2:${ae2_version}")
- 	compileOnly fg.deobf("curse.maven:extracells-351491:3712914")
-	compileOnly fg.deobf("curse.maven:extracells-410168:3718149")
-	//compile fg.deobf("net.darkhax.bookshelf:Bookshelf-1.16.5:10.0.1")
-    //compile fg.deobf("net.darkhax.botanybots:BotanyPots-1.16.5:7.0.1")
+    compileOnly(fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}"))
+    compileOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}"))
+    // at runtime, use the full JEI jar for Forge
+    runtimeOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}"))
+
+    implementation fg.deobf("appeng:appliedenergistics2:${ae2_version}")
+
+    implementation fg.deobf("curse.maven:extracells-351491:3712914")
+    implementation fg.deobf("curse.maven:extracells-410168:3888609")
+
+    implementation fg.deobf("net.darkhax.bookshelf:Bookshelf-Forge-${mc_version}:${bookshelf_version}")
+    implementation fg.deobf("net.darkhax.botanypots:BotanyPots-Forge-${mc_version}:${botanypot_version}")
 
     compileOnly "mekanism:Mekanism:${mekanism_version}:api"
 
@@ -167,27 +180,7 @@ dependencies {
     runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
     compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}:api")
 
-    // Specify the version of Minecraft to use, If this is any group other then 'net.minecraft' it is assumed
-    // that the dep is a ForgeGradle 'patcher' dependency. And it's patches will be applied.
-    // The userdev artifact is a special name and will get all sorts of transformations applied to it.
-    
-    // You may put jars on which you depend on in ./libs or you may define them like so..
-    // compile "some.group:artifact:version:classifier"
-    // compile "some.group:artifact:version"
-
-    // Real examples
-    // compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
-    // compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
-
-    // The 'provided' configuration is for optional dependencies that exist at compile-time but might not at runtime.
-    // provided 'com.mod-buildcraft:buildcraft:6.0.8:dev'
-
-    // These dependencies get remapped to your current MCP mappings
-    // deobf 'com.mod-buildcraft:buildcraft:6.0.8:dev'
-
-    // For more info...
-    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
-    // http://www.gradle.org/docs/current/userguide/dependency_management.html
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
 }
 

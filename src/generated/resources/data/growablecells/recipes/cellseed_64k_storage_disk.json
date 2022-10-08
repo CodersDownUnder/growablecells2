@@ -1,0 +1,44 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "values": [
+            {
+              "modid": "refinedstorage",
+              "type": "forge:mod_loaded"
+            },
+            {
+              "value": {
+                "type": "forge:false"
+              },
+              "type": "forge:not"
+            }
+          ],
+          "type": "forge:and"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "group": "growablecells_refinedstorage",
+        "pattern": [
+          " a ",
+          "aba",
+          " a "
+        ],
+        "key": {
+          "b": {
+            "tag": "forge:seeds"
+          },
+          "a": {
+            "item": "refinedstorage:64k_storage_disk"
+          }
+        },
+        "result": {
+          "item": "growablecells:seed_rs_64k_disk"
+        }
+      }
+    }
+  ]
+}

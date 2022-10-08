@@ -1,0 +1,44 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "values": [
+            {
+              "modid": "ae2",
+              "type": "forge:mod_loaded"
+            },
+            {
+              "value": {
+                "type": "forge:false"
+              },
+              "type": "forge:not"
+            }
+          ],
+          "type": "forge:and"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "group": "growablecells_ae2",
+        "pattern": [
+          " a ",
+          "aba",
+          " a "
+        ],
+        "key": {
+          "b": {
+            "tag": "forge:seeds"
+          },
+          "a": {
+            "item": "ae2:fluid_storage_cell_4k"
+          }
+        },
+        "result": {
+          "item": "growablecells:seed_ae2_fluid_4k_disk"
+        }
+      }
+    }
+  ]
+}

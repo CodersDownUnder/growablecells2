@@ -1,0 +1,7 @@
+{
+  "parent": "growablecells:block/crop_stage_3_template",
+  "textures": {
+    "crop": "growablecells:block/crop_stage_3",
+    "disk": "mekanism:item/qio_drive_supermassive"
+  }
+}
