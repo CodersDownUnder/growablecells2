@@ -1,0 +1,44 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:and",
+          "values": [
+            {
+              "type": "forge:mod_loaded",
+              "modid": "ae2"
+            },
+            {
+              "type": "forge:not",
+              "value": {
+                "type": "forge:false"
+              }
+            }
+          ]
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "group": "growablecells_ae2",
+        "key": {
+          "a": {
+            "item": "ae2:spatial_storage_cell_16"
+          },
+          "b": {
+            "tag": "forge:seeds"
+          }
+        },
+        "pattern": [
+          " a ",
+          "aba",
+          " a "
+        ],
+        "result": {
+          "item": "growablecells:seed_16cubed_disk"
+        }
+      }
+    }
+  ]
+}

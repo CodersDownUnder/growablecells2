@@ -6,12 +6,17 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nonnull;
 
 public class ModItemModelProvider extends ItemModelProvider {
+
+    private static final String LAYER_0 = "layer0";
 
     public ModItemModelProvider(DataGenerator generator, ExistingFileHelper helper) {
         super(generator, GrowableCellsMod.MODID, helper);
@@ -23,23 +28,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         return "Growable Cells Item Models";
     }
 
-    protected void oneLayerItem(Item item, ResourceLocation texture) {
-        ResourceLocation itemTexture = new ResourceLocation(GrowableCellsMod.MODID,"item/seed");
-        if (existingFileHelper.exists(itemTexture, PackType.CLIENT_RESOURCES, ".png", "textures")) {
-            getBuilder(item.getRegistryName().getPath()).parent(getExistingFile(mcLoc("item/generated")))
-                    .texture("layer0", itemTexture);
-        } else {
-            System.out.println(
-                    "Texture for " + item.getRegistryName().toString() + " not present at " + itemTexture.toString());
-        }
-    }
-
-    protected void oneLayerItem(Item item) {
-        oneLayerItem(item, item.getRegistryName());
-    }
-
     @Override
     protected void registerModels() {
+
+
         oneLayerItem(ItemInit.SEED_2CUBED_DISK.get());
         oneLayerItem(ItemInit.SEED_16CUBED_DISK.get());
         oneLayerItem(ItemInit.SEED_128CUBED_DISK.get());
@@ -95,6 +87,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         oneLayerItem(ItemInit.SEED_RS_ED_FLUID_262M_DISK.get());
         oneLayerItem(ItemInit.SEED_RS_ED_FLUID_1048M_DISK.get());
 
+    }
+
+    private ItemModelBuilder oneLayerItem(final Item item) {
+        return withExistingParent(ForgeRegistries.ITEMS.getKey(item.asItem()).getPath(), "item/generated")
+                .texture("layer0", modLoc("item/seed"));
     }
 
 }

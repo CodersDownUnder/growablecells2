@@ -2,67 +2,70 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "rolls": 1.0,
       "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "growablecells:crop_rs_es_fluid_1048576k_disk",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "age": "7"
+          }
+        }
+      ],
       "entries": [
         {
           "type": "minecraft:alternatives",
           "children": [
             {
-              "type": "growablecells:optional_item",
-              "conditions": [
+              "type": "minecraft:alternatives",
+              "children": [
                 {
-                  "condition": "minecraft:block_state_property",
-                  "block": "growablecells:crop_rs_16k_disk",
-                  "properties": {
-                    "age": "7"
-                  }
+                  "type": "growablecells:optional_item",
+                  "conditions": [
+                    {
+                      "block": "growablecells:crop_rs_es_fluid_1048576k_disk",
+                      "condition": "minecraft:block_state_property",
+                      "properties": {
+                        "age": "7"
+                      }
+                    }
+                  ],
+                  "name": "extrastorage:disk_1048576k_fluid"
+                },
+                {
+                  "type": "growablecells:optional_item",
+                  "functions": [
+                    {
+                      "function": "minecraft:explosion_decay"
+                    }
+                  ],
+                  "name": "growablecells:seed_rs_es_fluid_1048576k_disk"
                 }
-              ],
-              "name": "refinedstorage:16k_storage_disk"
-            },
-            {
-              "type": "growablecells:optional_item",
-              "name": "growablecells:seed_rs_16k_disk"
+              ]
             }
           ]
-        }
-      ]
-    },
-    {
-      "rolls": 1.0,
-      "bonus_rolls": 0.0,
-      "entries": [
+        },
         {
           "type": "growablecells:optional_item",
           "functions": [
             {
-              "function": "minecraft:apply_bonus",
               "enchantment": "minecraft:fortune",
               "formula": "minecraft:binomial_with_bonus_count",
+              "function": "minecraft:apply_bonus",
               "parameters": {
                 "extra": 2,
                 "probability": 0.5714286
               }
+            },
+            {
+              "function": "minecraft:explosion_decay"
             }
           ],
-          "name": "growablecells:seed_rs_16k_disk"
+          "name": "growablecells:seed_rs_es_fluid_1048576k_disk"
         }
       ],
-      "conditions": [
-        {
-          "condition": "minecraft:block_state_property",
-          "block": "growablecells:crop_rs_16k_disk",
-          "properties": {
-            "age": "7"
-          }
-        }
-      ]
-    }
-  ],
-  "functions": [
-    {
-      "function": "minecraft:explosion_decay"
+      "name": "translation{key='block.growablecells.crop_rs_es_fluid_1048576k_disk', args=[]}",
+      "rolls": 2.0
     }
   ]
 }

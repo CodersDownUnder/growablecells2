@@ -6,12 +6,13 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 public class BlockInit {
 	
-public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, GrowableCellsMod.MODID);
+	private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, GrowableCellsMod.MODID);
 	
 	/*
 	 *===================================================================================================================================
@@ -125,5 +126,10 @@ public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(For
 	public static final RegistryObject<Block> CROP_MEK_QIO_TIME_DRIVE = BLOCKS.register("crop_mek_qio_time_drive", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
 	public static final RegistryObject<Block> CROP_MEK_QIO_SUPER_DRIVE = BLOCKS.register("crop_mek_qio_super_drive", () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP)));
 
+
+
+	public static void register(IEventBus eventBus) {
+		BLOCKS.register(eventBus);
+	}
 	
 }

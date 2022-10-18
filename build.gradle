@@ -163,15 +163,17 @@ dependencies {
 
     implementation fg.deobf("appeng:appliedenergistics2:${ae2_version}")
 
-    implementation fg.deobf("curse.maven:extracells-351491:3712914")
-    implementation fg.deobf("curse.maven:extracells-410168:3888609")
+    implementation fg.deobf("curse.maven:extracells-351491:4012950")
+    implementation fg.deobf("curse.maven:extracells-410168:4018127")
+    implementation fg.deobf("curse.maven:edivadlib-638508:3927847")
 
-    implementation fg.deobf("net.darkhax.bookshelf:Bookshelf-Forge-${mc_version}:${bookshelf_version}")
-    implementation fg.deobf("net.darkhax.botanypots:BotanyPots-Forge-${mc_version}:${botanypot_version}")
+    //runtimeOnly fg.deobf("net.darkhax.bookshelf:Bookshelf-Forge-${mc_version}:${bookshelf_version}")
+    //runtimeOnly fg.deobf("net.darkhax.botanypots:BotanyPots-Forge-${mc_version}:${botanypot_version}")
 
+    //compileOnly "mekanism:Mekanism:${mekanism_version}:api"
     compileOnly "mekanism:Mekanism:${mekanism_version}:api"
-
-    // If you want to test/use Mekanism & its modules during `runClient` invocation, use the following
+//
+//    // If you want to test/use Mekanism & its modules during `runClient` invocation, use the following
     runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}")// core
     runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:additions")// Mekanism: Additions
     runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:generators")// Mekanism: Generators

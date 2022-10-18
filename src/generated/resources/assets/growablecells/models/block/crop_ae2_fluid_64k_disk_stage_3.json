@@ -1,5 +1,6 @@
 {
   "parent": "growablecells:block/crop_stage_3_template",
+  "render_type": "minecraft:cutout_mipped",
   "textures": {
     "crop": "growablecells:block/crop_stage_3",
     "disk": "ae2:item/fluid_storage_cell_64k"

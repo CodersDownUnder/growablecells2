@@ -1,0 +1,57 @@
+{
+  "advancements": [
+    {
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "criteria": {
+          "has_spatial_storage_cell_128": {
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "ae2:spatial_storage_cell_128"
+                  ]
+                }
+              ]
+            },
+            "trigger": "minecraft:inventory_changed"
+          },
+          "has_the_recipe": {
+            "conditions": {
+              "recipe": "growablecells:seed_128cubed_disk"
+            },
+            "trigger": "minecraft:recipe_unlocked"
+          }
+        },
+        "requirements": [
+          [
+            "has_spatial_storage_cell_128",
+            "has_the_recipe"
+          ]
+        ],
+        "rewards": {
+          "recipes": [
+            "growablecells:seed_128cubed_disk"
+          ]
+        }
+      },
+      "conditions": [
+        {
+          "type": "forge:and",
+          "values": [
+            {
+              "type": "forge:mod_loaded",
+              "modid": "ae2"
+            },
+            {
+              "type": "forge:not",
+              "value": {
+                "type": "forge:false"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

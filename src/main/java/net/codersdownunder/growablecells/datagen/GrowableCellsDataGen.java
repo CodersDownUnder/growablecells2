@@ -10,9 +10,9 @@ import net.codersdownunder.growablecells.datagen.server.ModLootTableProvider;
 import net.codersdownunder.growablecells.datagen.server.ModRecipeProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 
 @Mod.EventBusSubscriber(modid = GrowableCellsMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class GrowableCellsDataGen {
@@ -22,25 +22,19 @@ public class GrowableCellsDataGen {
         DataGenerator generator = event.getGenerator();
         ExistingFileHelper helper = event.getExistingFileHelper();
 
-        if (event.includeClient()) {
+        // Server Data Generation
+        ModBlockTagsProvider blockTags = new ModBlockTagsProvider(generator, helper);
+            generator.addProvider(event.includeServer(), new ModRecipeProvider(generator));
+            generator.addProvider(event.includeServer(), blockTags);
+            generator.addProvider(event.includeServer(), new ModItemTagsProvider(generator, blockTags, helper));
+            generator.addProvider(event.includeServer(), new ModLootTableProvider(generator));
 
-            // Client Data Generation
-            generator.addProvider(new ModBlockStateProvider(generator, helper));
-            generator.addProvider(new ModItemModelProvider(generator, helper));
-            generator.addProvider(new ModEnUsProvider(generator));
-        }
+        // Client Data Generation
+            generator.addProvider(event.includeClient(), new ModBlockStateProvider(generator, helper));
+            generator.addProvider(event.includeClient(), new ModItemModelProvider(generator, helper));
+            generator.addProvider(event.includeClient(), new ModEnUsProvider(generator));
 
-        if (event.includeServer()) {
 
-            ModBlockTagsProvider blockTags = new ModBlockTagsProvider(generator, helper);
-
-            // Server Data Generation
-            generator.addProvider(new ModRecipeProvider(generator));
-            generator.addProvider(blockTags);
-            generator.addProvider(new ModItemTagsProvider(generator, blockTags, helper));
-            generator.addProvider(new ModLootTableProvider(generator));
-
-        }
     }
 }
 

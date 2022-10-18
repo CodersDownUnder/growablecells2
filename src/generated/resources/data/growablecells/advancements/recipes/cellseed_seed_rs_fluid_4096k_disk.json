@@ -1,0 +1,57 @@
+{
+  "advancements": [
+    {
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "criteria": {
+          "has_4096k_fluid_storage_disk": {
+            "conditions": {
+              "items": [
+                {
+                  "items": [
+                    "refinedstorage:4096k_fluid_storage_disk"
+                  ]
+                }
+              ]
+            },
+            "trigger": "minecraft:inventory_changed"
+          },
+          "has_the_recipe": {
+            "conditions": {
+              "recipe": "growablecells:seed_rs_fluid_4096k_disk"
+            },
+            "trigger": "minecraft:recipe_unlocked"
+          }
+        },
+        "requirements": [
+          [
+            "has_4096k_fluid_storage_disk",
+            "has_the_recipe"
+          ]
+        ],
+        "rewards": {
+          "recipes": [
+            "growablecells:seed_rs_fluid_4096k_disk"
+          ]
+        }
+      },
+      "conditions": [
+        {
+          "type": "forge:and",
+          "values": [
+            {
+              "type": "forge:mod_loaded",
+              "modid": "refinedstorage"
+            },
+            {
+              "type": "forge:not",
+              "value": {
+                "type": "forge:false"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

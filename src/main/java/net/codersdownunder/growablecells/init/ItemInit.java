@@ -3,6 +3,7 @@ package net.codersdownunder.growablecells.init;
 import net.codersdownunder.growablecells.GrowableCellsMod;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -10,7 +11,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class ItemInit {
 
 	
-	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, GrowableCellsMod.MODID);
+	private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, GrowableCellsMod.MODID);
 
 	/*
 	 *===================================================================================================================================
@@ -128,4 +129,8 @@ public class ItemInit {
 	public static final RegistryObject<Item> SEED_MEK_QIO_TIME_DRIVE = ITEMS.register("seed_mek_qio_time_drive", () -> new BlockItem(BlockInit.CROP_MEK_QIO_TIME_DRIVE.get(), new Item.Properties().tab(GrowableCellsMod.GROWABLE_CELLS_TAB)));
 	public static final RegistryObject<Item> SEED_MEK_QIO_SUPER_DRIVE = ITEMS.register("seed_mek_qio_super_drive", () -> new BlockItem(BlockInit.CROP_MEK_QIO_SUPER_DRIVE.get(), new Item.Properties().tab(GrowableCellsMod.GROWABLE_CELLS_TAB)));
 
+
+	public static void register(IEventBus eventBus) {
+		ITEMS.register(eventBus);
+	}
 }

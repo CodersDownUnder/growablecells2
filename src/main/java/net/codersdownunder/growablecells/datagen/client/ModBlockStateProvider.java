@@ -9,6 +9,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nonnull;
 
@@ -100,12 +101,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     public void makeCrop(CropBlock block, String modid,  String textureName) {
 
-        ModelFile stage_0 = models().crop(block.getRegistryName().getPath().toString() + "_stage_0", new ResourceLocation("growablecells:block/crop_stage_0"));
-        ModelFile stage_1 = models().crop(block.getRegistryName().getPath().toString() + "_stage_1", modLoc("block/crop_stage_1"));
-        ModelFile stage_2 = models().crop(block.getRegistryName().getPath().toString() + "_stage_2", modLoc("block/crop_stage_2"));
-        ModelFile stage_3 = models().withExistingParent(block.getRegistryName().getPath().toString() + "_stage_3", modLoc("block/crop_stage_3_template"))
+        String blockName = ForgeRegistries.BLOCKS.getKey(block).getPath();
+
+        ModelFile stage_0 = models().crop(blockName + "_stage_0", modLoc("block/crop_stage_0")).renderType("minecraft:cutout_mipped");
+        ModelFile stage_1 = models().crop(blockName + "_stage_1", modLoc("block/crop_stage_1")).renderType("minecraft:cutout_mipped");
+        ModelFile stage_2 = models().crop(blockName + "_stage_2", modLoc("block/crop_stage_2")).renderType("minecraft:cutout_mipped");
+        ModelFile stage_3 = models().withExistingParent(blockName + "_stage_3", modLoc("block/crop_stage_3_template"))
                 .texture("crop", modLoc("block/crop_stage_3"))
-                .texture("disk", new ResourceLocation(modid, textureName));
+                .texture("disk", new ResourceLocation(modid, textureName)).renderType("minecraft:cutout_mipped");
 
         getVariantBuilder(block)
                 .partialState()

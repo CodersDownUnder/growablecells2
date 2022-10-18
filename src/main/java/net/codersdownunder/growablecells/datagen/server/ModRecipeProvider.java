@@ -15,6 +15,7 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.ConditionalRecipe;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
@@ -261,11 +262,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         .pattern(" a ")
                         .define('b', Tags.Items.SEEDS)
                         .define('a', cell)
-                        .unlockedBy("has_" + cell.asItem().getRegistryName().getPath(), has(cell))
+                        .unlockedBy("has_" + cell.getDescriptionId().substring(6 + modid.length()), has(cell))
                         ::save)
                 .generateAdvancement()
-                .build(consumer, new ResourceLocation(GrowableCellsMod.MODID, "cellseed_" + cell.getRegistryName().getPath()));
+                .build(consumer, new ResourceLocation(GrowableCellsMod.MODID, "cellseed_" + ForgeRegistries.ITEMS.getKey(cellSeed).getPath()));
 
+//        GrowableCellsMod.LOGGER.info("************ " + cell.getDescriptionId().substring(6 + modid.length()));
 
     }
 
