@@ -4,12 +4,12 @@
       "advancement": {
         "parent": "minecraft:recipes/root",
         "criteria": {
-          "has_qio_drive_hyper_dense": {
+          "has_t.air": {
             "conditions": {
               "items": [
                 {
                   "items": [
-                    "mekanism:qio_drive_hyper_dense"
+                    "minecraft:air"
                   ]
                 }
               ]
@@ -25,7 +25,7 @@
         },
         "requirements": [
           [
-            "has_qio_drive_hyper_dense",
+            "has_t.air",
             "has_the_recipe"
           ]
         ],

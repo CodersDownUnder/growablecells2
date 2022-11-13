@@ -23,9 +23,7 @@
         "type": "minecraft:crafting_shaped",
         "group": "growablecells_mekanism",
         "key": {
-          "a": {
-            "item": "mekanism:qio_drive_time_dilating"
-          },
+          "a": [],
           "b": {
             "tag": "forge:seeds"
           }

@@ -5,7 +5,7 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "block": "growablecells:crop_rs_es_fluid_1048576k_disk",
+          "block": "growablecells:crop_mek_qio_hyper_drive",
           "condition": "minecraft:block_state_property",
           "properties": {
             "age": "7"
@@ -23,14 +23,14 @@
                   "type": "growablecells:optional_item",
                   "conditions": [
                     {
-                      "block": "growablecells:crop_rs_es_fluid_1048576k_disk",
+                      "block": "growablecells:crop_mek_qio_hyper_drive",
                       "condition": "minecraft:block_state_property",
                       "properties": {
                         "age": "7"
                       }
                     }
                   ],
-                  "name": "extrastorage:disk_1048576k_fluid"
+                  "name": "minecraft:air"
                 },
                 {
                   "type": "growablecells:optional_item",
@@ -39,7 +39,7 @@
                       "function": "minecraft:explosion_decay"
                     }
                   ],
-                  "name": "growablecells:seed_rs_es_fluid_1048576k_disk"
+                  "name": "growablecells:seed_mek_qio_hyper_drive"
                 }
               ]
             }
@@ -61,10 +61,10 @@
               "function": "minecraft:explosion_decay"
             }
           ],
-          "name": "growablecells:seed_rs_es_fluid_1048576k_disk"
+          "name": "growablecells:seed_mek_qio_hyper_drive"
         }
       ],
-      "name": "translation{key='block.growablecells.crop_rs_es_fluid_1048576k_disk', args=[]}",
+      "name": "translation{key='block.growablecells.crop_mek_qio_hyper_drive', args=[]}",
       "rolls": 2.0
     }
   ]

@@ -201,9 +201,8 @@ public final class ModLootTableProvider extends BaseLootTableProvider {
     }
 
     private void createLootTable(Block cropBlock, Item seedItem, Item cropGrownItem) {
-        lootTables.put(cropBlock, createOptionalCellDrops(BlockInit.CROP_RS_ES_FLUID_1048576K_DISK.get(),
-                edivad.extrastorage.setup.Registration.FLUID_DISK
-                        .get(edivad.extrastorage.items.storage.fluid.FluidStorageType.TIER_8).get().asItem(),
-                ItemInit.SEED_RS_ES_FLUID_1048576K_DISK.get()));
+        lootTables.put(cropBlock, createOptionalCellDrops(cropBlock,
+                seedItem,
+                cropGrownItem));
     }
 }

@@ -164,7 +164,7 @@ dependencies {
     implementation fg.deobf("appeng:appliedenergistics2:${ae2_version}")
 
     implementation fg.deobf("curse.maven:extracells-351491:4012950")
-    implementation fg.deobf("curse.maven:extracells-410168:4018127")
+    implementation fg.deobf("curse.maven:extracells-410168:4031259")
     implementation fg.deobf("curse.maven:edivadlib-638508:3927847")
 
     //runtimeOnly fg.deobf("net.darkhax.bookshelf:Bookshelf-Forge-${mc_version}:${bookshelf_version}")
