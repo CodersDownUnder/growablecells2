@@ -21,9 +21,12 @@
       ],
       "recipe": {
         "type": "minecraft:crafting_shaped",
+        "category": "misc",
         "group": "growablecells_mekanism",
         "key": {
-          "a": [],
+          "a": {
+            "item": "mekanism:qio_drive_time_dilating"
+          },
           "b": {
             "tag": "forge:seeds"
           }
@@ -34,8 +37,9 @@
           " a "
         ],
         "result": {
-          "item": "growablecells:seed_mek_qio_time_drive"
-        }
+          "item": "mekanism:qio_drive_time_dilating"
+        },
+        "show_notification": true
       }
     }
   ]

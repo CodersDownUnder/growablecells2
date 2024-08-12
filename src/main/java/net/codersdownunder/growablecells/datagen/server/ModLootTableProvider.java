@@ -14,20 +14,21 @@ import net.codersdownunder.growablecells.init.BlockInit;
 import net.codersdownunder.growablecells.init.ItemInit;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.loot.BlockLoot;
-import net.minecraft.data.loot.LootTableProvider;
+import net.minecraft.data.PackOutput;
+import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
+import net.minecraft.world.level.storage.loot.entries.AlternativesEntry;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.functions.ApplyExplosionDecay;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -35,18 +36,19 @@ import javax.annotation.Nonnull;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 
-public final class ModLootTableProvider extends BaseLootTableProvider {
-    public ModLootTableProvider(DataGenerator dataGeneratorIn) {
-        super(dataGeneratorIn);
+public final class ModLootTableProvider  extends BlockLootSubProvider {
+    public ModLootTableProvider() {
+        super(Set.of(), FeatureFlags.REGISTRY.allFlags());
     }
 
     @Override
-    protected void addTables() {
+    protected void generate() {
         /*
          * AE2 Crop Loottables
          */
@@ -157,52 +159,80 @@ public final class ModLootTableProvider extends BaseLootTableProvider {
          */
 
         createLootTable(BlockInit.CROP_RS_ES_256K_DISK.get(),
-                edivad.extrastorage.setup.Registration.ITEM_DISK
+                edivad.extrastorage.setup.ESItems.ITEM_DISK
                         .get(edivad.extrastorage.items.storage.item.ItemStorageType.TIER_5).get().asItem(),
                 ItemInit.SEED_RS_ES_256K_DISK.get());
 
         createLootTable(BlockInit.CROP_RS_ES_1024K_DISK.get(),
-                edivad.extrastorage.setup.Registration.ITEM_DISK
+                edivad.extrastorage.setup.ESItems.ITEM_DISK
                         .get(edivad.extrastorage.items.storage.item.ItemStorageType.TIER_6).get().asItem(),
                 ItemInit.SEED_RS_ES_1024K_DISK.get());
 
         createLootTable(BlockInit.CROP_RS_ES_4096K_DISK.get(),
-                edivad.extrastorage.setup.Registration.ITEM_DISK
+                edivad.extrastorage.setup.ESItems.ITEM_DISK
                         .get(edivad.extrastorage.items.storage.item.ItemStorageType.TIER_7).get().asItem(),
                 ItemInit.SEED_RS_ES_4096K_DISK.get());
 
         createLootTable(BlockInit.CROP_RS_ES_16384K_DISK.get(),
-                edivad.extrastorage.setup.Registration.ITEM_DISK
+                edivad.extrastorage.setup.ESItems.ITEM_DISK
                         .get(edivad.extrastorage.items.storage.item.ItemStorageType.TIER_8).get().asItem(),
                 ItemInit.SEED_RS_ES_16384K_DISK.get());
 
 
         createLootTable(BlockInit.CROP_RS_ES_FLUID_16384K_DISK.get(),
-                edivad.extrastorage.setup.Registration.FLUID_DISK
+                edivad.extrastorage.setup.ESItems.FLUID_DISK
                         .get(edivad.extrastorage.items.storage.fluid.FluidStorageType.TIER_5).get().asItem(),
                 ItemInit.SEED_RS_ES_FLUID_16384K_DISK.get());
 
         createLootTable(BlockInit.CROP_RS_ES_FLUID_65536K_DISK.get(),
-                edivad.extrastorage.setup.Registration.FLUID_DISK
+                edivad.extrastorage.setup.ESItems.FLUID_DISK
                         .get(edivad.extrastorage.items.storage.fluid.FluidStorageType.TIER_6).get().asItem(),
                 ItemInit.SEED_RS_ES_FLUID_65536K_DISK.get());
 
         createLootTable(BlockInit.CROP_RS_ES_FLUID_262144K_DISK.get(),
-                edivad.extrastorage.setup.Registration.FLUID_DISK
+                edivad.extrastorage.setup.ESItems.FLUID_DISK
                         .get(edivad.extrastorage.items.storage.fluid.FluidStorageType.TIER_7).get().asItem(),
                 ItemInit.SEED_RS_ES_FLUID_262144K_DISK.get());
 
         createLootTable(BlockInit.CROP_RS_ES_FLUID_1048576K_DISK.get(),
-                edivad.extrastorage.setup.Registration.FLUID_DISK
+                edivad.extrastorage.setup.ESItems.FLUID_DISK
                         .get(edivad.extrastorage.items.storage.fluid.FluidStorageType.TIER_8).get().asItem(),
                 ItemInit.SEED_RS_ES_FLUID_1048576K_DISK.get());
 
 
     }
 
+    private static LootItemCondition.Builder cropCondition(Block cropBlock) {
+        return LootItemBlockStatePropertyCondition
+                .hasBlockStateProperties(cropBlock)
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SingleCropBlock.AGE, 7));
+    }
+
+    protected static LootTable.Builder createOptionalCellDrops(Block cropBlock, Item grownCropItem, Item seedsItem) {
+        LootPool.Builder builder = LootPool.lootPool()
+                .name(cropBlock.getName().toString())
+                .setRolls(ConstantValue.exactly(2))
+                .add(AlternativesEntry.alternatives(
+                        OptionalLootItem.lootTableItem(grownCropItem)
+                                .when(cropCondition(cropBlock))
+                                .otherwise(OptionalLootItem.lootTableItem(seedsItem).apply(ApplyExplosionDecay.explosionDecay()))
+                )).when(cropCondition(cropBlock)).add(OptionalLootItem.lootTableItem(seedsItem)
+                        .apply(ApplyBonusCount
+                                .addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.5714286F, 2))
+                        .apply(ApplyExplosionDecay.explosionDecay()));
+
+        return LootTable.lootTable().withPool(builder);
+    }
+
+
     private void createLootTable(Block cropBlock, Item seedItem, Item cropGrownItem) {
-        lootTables.put(cropBlock, createOptionalCellDrops(cropBlock,
+        add(cropBlock, createOptionalCellDrops(cropBlock,
                 seedItem,
                 cropGrownItem));
+    }
+
+    @Override
+    protected Iterable<Block> getKnownBlocks() {
+        return BlockInit.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
     }
 }

@@ -4,12 +4,12 @@
       "advancement": {
         "parent": "minecraft:recipes/root",
         "criteria": {
-          "has_t.air": {
+          "has_qio_drive_base": {
             "conditions": {
               "items": [
                 {
                   "items": [
-                    "minecraft:air"
+                    "mekanism:qio_drive_base"
                   ]
                 }
               ]
@@ -18,22 +18,23 @@
           },
           "has_the_recipe": {
             "conditions": {
-              "recipe": "growablecells:seed_mek_qio_drive"
+              "recipe": "mekanism:qio_drive_base"
             },
             "trigger": "minecraft:recipe_unlocked"
           }
         },
         "requirements": [
           [
-            "has_t.air",
+            "has_qio_drive_base",
             "has_the_recipe"
           ]
         ],
         "rewards": {
           "recipes": [
-            "growablecells:seed_mek_qio_drive"
+            "mekanism:qio_drive_base"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

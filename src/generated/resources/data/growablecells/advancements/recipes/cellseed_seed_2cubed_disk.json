@@ -18,7 +18,7 @@
           },
           "has_the_recipe": {
             "conditions": {
-              "recipe": "growablecells:seed_2cubed_disk"
+              "recipe": "ae2:spatial_storage_cell_2"
             },
             "trigger": "minecraft:recipe_unlocked"
           }
@@ -31,9 +31,10 @@
         ],
         "rewards": {
           "recipes": [
-            "growablecells:seed_2cubed_disk"
+            "ae2:spatial_storage_cell_2"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

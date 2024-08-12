@@ -18,7 +18,7 @@
           },
           "has_the_recipe": {
             "conditions": {
-              "recipe": "growablecells:seed_rs_es_fluid_16384k_disk"
+              "recipe": "extrastorage:disk_16384k_fluid"
             },
             "trigger": "minecraft:recipe_unlocked"
           }
@@ -31,9 +31,10 @@
         ],
         "rewards": {
           "recipes": [
-            "growablecells:seed_rs_es_fluid_16384k_disk"
+            "extrastorage:disk_16384k_fluid"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

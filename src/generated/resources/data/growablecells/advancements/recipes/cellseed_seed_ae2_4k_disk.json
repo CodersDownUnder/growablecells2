@@ -18,7 +18,7 @@
           },
           "has_the_recipe": {
             "conditions": {
-              "recipe": "growablecells:seed_ae2_4k_disk"
+              "recipe": "ae2:item_storage_cell_4k"
             },
             "trigger": "minecraft:recipe_unlocked"
           }
@@ -31,9 +31,10 @@
         ],
         "rewards": {
           "recipes": [
-            "growablecells:seed_ae2_4k_disk"
+            "ae2:item_storage_cell_4k"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

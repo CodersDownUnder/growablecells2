@@ -4,12 +4,12 @@
       "advancement": {
         "parent": "minecraft:recipes/root",
         "criteria": {
-          "has_t.air": {
+          "has_qio_drive_hyper_dense": {
             "conditions": {
               "items": [
                 {
                   "items": [
-                    "minecraft:air"
+                    "mekanism:qio_drive_hyper_dense"
                   ]
                 }
               ]
@@ -18,22 +18,23 @@
           },
           "has_the_recipe": {
             "conditions": {
-              "recipe": "growablecells:seed_mek_qio_hyper_drive"
+              "recipe": "mekanism:qio_drive_hyper_dense"
             },
             "trigger": "minecraft:recipe_unlocked"
           }
         },
         "requirements": [
           [
-            "has_t.air",
+            "has_qio_drive_hyper_dense",
             "has_the_recipe"
           ]
         ],
         "rewards": {
           "recipes": [
-            "growablecells:seed_mek_qio_hyper_drive"
+            "mekanism:qio_drive_hyper_dense"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

@@ -3,11 +3,12 @@ package net.codersdownunder.growablecells.datagen.client.lang;
 import net.codersdownunder.growablecells.GrowableCellsMod;
 import net.codersdownunder.growablecells.init.BlockInit;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.LanguageProvider;
 
 public class ModEnUsProvider extends LanguageProvider {
 
-    public ModEnUsProvider(DataGenerator gen) {
+    public ModEnUsProvider(PackOutput gen) {
         super(gen, GrowableCellsMod.MODID, "en_us");
     }
 
@@ -27,6 +28,7 @@ public class ModEnUsProvider extends LanguageProvider {
         addRSEDTranslations();
 
         add("itemGroup.growablecells", "Growable Cells 2");
+        add("growablecells.text.packmeta.description", "Growable cells resource and datapack");
     }
 
     private void addQIOTranslation() {

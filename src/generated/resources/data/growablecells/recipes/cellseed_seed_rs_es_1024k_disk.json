@@ -21,6 +21,7 @@
       ],
       "recipe": {
         "type": "minecraft:crafting_shaped",
+        "category": "misc",
         "group": "growablecells_extrastorage",
         "key": {
           "a": {
@@ -36,8 +37,9 @@
           " a "
         ],
         "result": {
-          "item": "growablecells:seed_rs_es_1024k_disk"
-        }
+          "item": "extrastorage:disk_1024k"
+        },
+        "show_notification": true
       }
     }
   ]

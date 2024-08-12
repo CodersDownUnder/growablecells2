@@ -3,6 +3,6 @@
   "render_type": "minecraft:cutout_mipped",
   "textures": {
     "crop": "growablecells:block/crop_stage_3",
-    "disk": "extrastorage:items/disks/256k"
+    "disk": "extrastorage:item/disks/256k"
   }
 }

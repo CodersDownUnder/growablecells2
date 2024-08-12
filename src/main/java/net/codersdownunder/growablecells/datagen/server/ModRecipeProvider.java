@@ -1,5 +1,6 @@
 package net.codersdownunder.growablecells.datagen.server;
 
+
 import appeng.core.definitions.AEItems;
 import com.refinedmods.refinedstorage.RSItems;
 import com.refinedmods.refinedstorage.apiimpl.storage.FluidStorageType;
@@ -10,12 +11,14 @@ import de.melanx.extradisks.items.item.ExtraItemStorageType;
 import net.codersdownunder.growablecells.GrowableCellsMod;
 import net.codersdownunder.growablecells.init.ItemInit;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.ConditionalRecipe;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
@@ -25,20 +28,12 @@ import java.util.function.Consumer;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
 
-    public ModRecipeProvider(DataGenerator generator) {
+    public ModRecipeProvider(PackOutput generator) {
         super(generator);
     }
 
     @Override
-    public String getName() {
-
-        return "Growable Cells: Recipes";
-    }
-
-
-    @Override
-    protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
-
+    protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
         /*
          * Refined Storage Recipes Start
          */
@@ -139,7 +134,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         /*
          * Mekanism QIO Recipes End
-        */
+         */
 
         /*
          * Extra Disks Recipes Start
@@ -203,44 +198,44 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         GrowableCellsMod.LOGGER.info("Generating Extra Storage Item Disk Seed Recipes");
 
         SeedRecipe("extrastorage", consumer,
-                edivad.extrastorage.setup.Registration.ITEM_DISK
+                edivad.extrastorage.setup.ESItems.ITEM_DISK
                         .get(edivad.extrastorage.items.storage.item.ItemStorageType.TIER_5).get().asItem(),
                 ItemInit.SEED_RS_ES_256K_DISK.get());
 
         SeedRecipe("extrastorage", consumer,
-                edivad.extrastorage.setup.Registration.ITEM_DISK
+                edivad.extrastorage.setup.ESItems.ITEM_DISK
                         .get(edivad.extrastorage.items.storage.item.ItemStorageType.TIER_6).get().asItem(),
                 ItemInit.SEED_RS_ES_1024K_DISK.get());
 
         SeedRecipe("extrastorage", consumer,
-                edivad.extrastorage.setup.Registration.ITEM_DISK
+                edivad.extrastorage.setup.ESItems.ITEM_DISK
                         .get(edivad.extrastorage.items.storage.item.ItemStorageType.TIER_7).get().asItem(),
                 ItemInit.SEED_RS_ES_4096K_DISK.get());
 
         SeedRecipe("extrastorage", consumer,
-                edivad.extrastorage.setup.Registration.ITEM_DISK
+                edivad.extrastorage.setup.ESItems.ITEM_DISK
                         .get(edivad.extrastorage.items.storage.item.ItemStorageType.TIER_8).get().asItem(),
                 ItemInit.SEED_RS_ES_16384K_DISK.get());
 
         GrowableCellsMod.LOGGER.info("Generating Extra Storage Fluid Disk Seed Recipes");
 
         SeedRecipe("extrastorage", consumer,
-                edivad.extrastorage.setup.Registration.FLUID_DISK
+                edivad.extrastorage.setup.ESItems.FLUID_DISK
                         .get(edivad.extrastorage.items.storage.fluid.FluidStorageType.TIER_5).get().asItem(),
                 ItemInit.SEED_RS_ES_FLUID_16384K_DISK.get());
 
         SeedRecipe("extrastorage", consumer,
-                edivad.extrastorage.setup.Registration.FLUID_DISK
+                edivad.extrastorage.setup.ESItems.FLUID_DISK
                         .get(edivad.extrastorage.items.storage.fluid.FluidStorageType.TIER_6).get().asItem(),
                 ItemInit.SEED_RS_ES_FLUID_65536K_DISK.get());
 
         SeedRecipe("extrastorage", consumer,
-                edivad.extrastorage.setup.Registration.FLUID_DISK
+                edivad.extrastorage.setup.ESItems.FLUID_DISK
                         .get(edivad.extrastorage.items.storage.fluid.FluidStorageType.TIER_7).get().asItem(),
                 ItemInit.SEED_RS_ES_FLUID_262144K_DISK.get());
 
         SeedRecipe("extrastorage", consumer,
-                edivad.extrastorage.setup.Registration.FLUID_DISK
+                edivad.extrastorage.setup.ESItems.FLUID_DISK
                         .get(edivad.extrastorage.items.storage.fluid.FluidStorageType.TIER_8).get().asItem(),
                 ItemInit.SEED_RS_ES_FLUID_1048576K_DISK.get());
         /*
@@ -255,7 +250,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         ConditionalRecipe.builder()
                 .addCondition(and(modLoaded(modid), not(FALSE())))
-                .addRecipe(ShapedRecipeBuilder.shaped(cellSeed)
+                .addRecipe(ShapedRecipeBuilder.shaped(RecipeCategory.MISC, cell)
                         .group("growablecells_" + modid)
                         .pattern(" a ")
                         .pattern("aba")
@@ -270,5 +265,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 //        GrowableCellsMod.LOGGER.info("************ " + cell.getDescriptionId().substring(6 + modid.length()));
 
     }
+
+//    public String getName() {
+//
+//        return "Growable Cells: Recipes";
+//    }
 
 }

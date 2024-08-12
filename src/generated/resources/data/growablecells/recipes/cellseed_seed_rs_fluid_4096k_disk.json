@@ -21,6 +21,7 @@
       ],
       "recipe": {
         "type": "minecraft:crafting_shaped",
+        "category": "misc",
         "group": "growablecells_refinedstorage",
         "key": {
           "a": {
@@ -36,8 +37,9 @@
           " a "
         ],
         "result": {
-          "item": "growablecells:seed_rs_fluid_4096k_disk"
-        }
+          "item": "refinedstorage:4096k_fluid_storage_disk"
+        },
+        "show_notification": true
       }
     }
   ]

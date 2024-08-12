@@ -21,6 +21,7 @@
       ],
       "recipe": {
         "type": "minecraft:crafting_shaped",
+        "category": "misc",
         "group": "growablecells_ae2",
         "key": {
           "a": {
@@ -36,8 +37,9 @@
           " a "
         ],
         "result": {
-          "item": "growablecells:seed_2cubed_disk"
-        }
+          "item": "ae2:spatial_storage_cell_2"
+        },
+        "show_notification": true
       }
     }
   ]

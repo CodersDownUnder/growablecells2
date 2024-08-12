@@ -1,6 +1,8 @@
 package net.codersdownunder.growablecells;
 
+import net.codersdownunder.growablecells.init.CreativeTabInit;
 import net.codersdownunder.growablecells.init.LootEntryTypeInit;
+import net.codersdownunder.growablecells.utils.LogFilter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,21 +20,20 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 @Mod(GrowableCellsMod.MODID)
 public class GrowableCellsMod
 {
-    
-	public static final String MODID = "growablecells";
-	public static GrowableCellsItemGroup GROWABLE_CELLS_TAB;
-	
-	public static Boolean AE2Loaded;
-	//public static Boolean AE2StuffLoaded;
-	
-	public static Boolean RSLoaded;
-	public static Boolean RSESLoaded;
-	public static Boolean RSEDLoaded;
-	
-	public static Boolean MEKLoaded;
-	
-	
-	public static final Logger LOGGER = LogManager.getLogger();
+
+    public static final String MODID = "growablecells";
+    //public static GrowableCellsItemGroup GROWABLE_CELLS_TAB;
+
+    public static Boolean AE2Loaded;
+    //public static Boolean AE2StuffLoaded;
+
+    public static Boolean RSLoaded;
+    public static Boolean RSESLoaded;
+    public static Boolean RSEDLoaded;
+
+    public static Boolean MEKLoaded;
+
+    public static final Logger LOGGER = LogManager.getLogger();
 
     public GrowableCellsMod() {
 
@@ -41,6 +42,7 @@ public class GrowableCellsMod
         ItemInit.register(bus);
         BlockInit.register(bus);
         LootEntryTypeInit.register(bus);
+        CreativeTabInit.register(bus);
 
         bus.addListener(this::setup);
         //bus.addListener(this::clientSetup);
@@ -55,16 +57,15 @@ public class GrowableCellsMod
         RSESLoaded = ModList.get().isLoaded("extrastorage");
         MEKLoaded = ModList.get().isLoaded("mekanism");
 
-        GROWABLE_CELLS_TAB = new GrowableCellsItemGroup("growablecells");
 
     }
 
     private void setup(final FMLCommonSetupEvent event)
     {
-    	
-    	
-    	
-    	event.enqueueWork(() -> {
+
+        LogFilter.apply();
+
+        event.enqueueWork(() -> {
             // CROPS
             {
                 float chance = 0.3F;
@@ -134,16 +135,12 @@ public class GrowableCellsMod
                 ComposterBlock.COMPOSTABLES.put(ItemInit.SEED_MEK_QIO_SUPER_DRIVE.get(), chance);
 
 
-            }
-    	});
+            }});
     }
-    
-    
-    
+
 //    private void clientSetup(final FMLClientSetupEvent event)
 //	{
 //
 //	}
 
- 
 }

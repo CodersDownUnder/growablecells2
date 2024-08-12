@@ -67,5 +67,6 @@
       "name": "translation{key='block.growablecells.crop_ae2_1k_disk', args=[]}",
       "rolls": 2.0
     }
-  ]
+  ],
+  "random_sequence": "growablecells:blocks/crop_ae2_1k_disk"
 }

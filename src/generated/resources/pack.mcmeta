@@ -1,0 +1,8 @@
+{
+  "pack": {
+    "description": {
+      "translate": "growablecells.text.packmeta.description"
+    },
+    "pack_format": 15
+  }
+}

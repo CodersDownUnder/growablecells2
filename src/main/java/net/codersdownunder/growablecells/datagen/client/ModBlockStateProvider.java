@@ -4,6 +4,7 @@ import net.codersdownunder.growablecells.GrowableCellsMod;
 import net.codersdownunder.growablecells.blocks.SingleCropBlock;
 import net.codersdownunder.growablecells.init.BlockInit;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
@@ -16,7 +17,7 @@ import javax.annotation.Nonnull;
 
 public class ModBlockStateProvider extends BlockStateProvider {
 
-    public ModBlockStateProvider(DataGenerator generator, ExistingFileHelper helper) {
+    public ModBlockStateProvider(PackOutput generator, ExistingFileHelper helper) {
         super(generator, GrowableCellsMod.MODID, helper);
     }
 
@@ -70,15 +71,15 @@ public class ModBlockStateProvider extends BlockStateProvider {
          * Extra Storage Crop Blockstates and Models
          */
 
-        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ES_256K_DISK.get(), "extrastorage", "items/disks/256k");
-        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ES_1024K_DISK.get(), "extrastorage", "items/disks/1024k");
-        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ES_4096K_DISK.get(), "extrastorage", "items/disks/4096k");
-        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ES_16384K_DISK.get(), "extrastorage", "items/disks/16384k");
+        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ES_256K_DISK.get(), "extrastorage", "item/disks/256k");
+        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ES_1024K_DISK.get(), "extrastorage", "item/disks/1024k");
+        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ES_4096K_DISK.get(), "extrastorage", "item/disks/4096k");
+        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ES_16384K_DISK.get(), "extrastorage", "item/disks/16384k");
 
-        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ES_FLUID_16384K_DISK.get(), "extrastorage", "items/disks/16384k_fluid");
-        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ES_FLUID_65536K_DISK.get(), "extrastorage", "items/disks/65536k_fluid");
-        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ES_FLUID_262144K_DISK.get(), "extrastorage", "items/disks/262144k_fluid");
-        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ES_FLUID_1048576K_DISK.get(), "extrastorage", "items/disks/1048576k_fluid");
+        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ES_FLUID_16384K_DISK.get(), "extrastorage", "item/disks/16384k_fluid");
+        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ES_FLUID_65536K_DISK.get(), "extrastorage", "item/disks/65536k_fluid");
+        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ES_FLUID_262144K_DISK.get(), "extrastorage", "item/disks/262144k_fluid");
+        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ES_FLUID_1048576K_DISK.get(), "extrastorage", "item/disks/1048576k_fluid");
 
         /*
          * Extra Disks Crop Blockstates and Models

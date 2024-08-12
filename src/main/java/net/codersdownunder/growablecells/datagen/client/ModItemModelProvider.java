@@ -3,6 +3,7 @@ package net.codersdownunder.growablecells.datagen.client;
 import net.codersdownunder.growablecells.GrowableCellsMod;
 import net.codersdownunder.growablecells.init.ItemInit;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.item.Item;
@@ -18,7 +19,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     private static final String LAYER_0 = "layer0";
 
-    public ModItemModelProvider(DataGenerator generator, ExistingFileHelper helper) {
+    public ModItemModelProvider(PackOutput generator, ExistingFileHelper helper) {
         super(generator, GrowableCellsMod.MODID, helper);
     }
 

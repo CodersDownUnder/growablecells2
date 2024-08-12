@@ -18,7 +18,7 @@
           },
           "has_the_recipe": {
             "conditions": {
-              "recipe": "growablecells:seed_rs_64k_disk"
+              "recipe": "refinedstorage:64k_storage_disk"
             },
             "trigger": "minecraft:recipe_unlocked"
           }
@@ -31,9 +31,10 @@
         ],
         "rewards": {
           "recipes": [
-            "growablecells:seed_rs_64k_disk"
+            "refinedstorage:64k_storage_disk"
           ]
-        }
+        },
+        "sends_telemetry_event": false
       },
       "conditions": [
         {

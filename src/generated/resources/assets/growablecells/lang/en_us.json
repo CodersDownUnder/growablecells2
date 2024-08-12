@@ -41,5 +41,6 @@
   "block.growablecells.crop_rs_fluid_256k_disk": "Refined Storage 256K Fluid Disk Seed",
   "block.growablecells.crop_rs_fluid_4096k_disk": "Refined Storage 4096K Fluid Disk Seed",
   "block.growablecells.crop_rs_fluid_64k_disk": "Refined Storage 64K Fluid Disk Seed",
+  "growablecells.text.packmeta.description": "Growable cells resource and datapack",
   "itemGroup.growablecells": "Growable Cells 2"
 }

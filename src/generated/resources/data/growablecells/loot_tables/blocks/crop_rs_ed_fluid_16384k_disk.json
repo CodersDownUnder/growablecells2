@@ -67,5 +67,6 @@
       "name": "translation{key='block.growablecells.crop_rs_ed_fluid_16384k_disk', args=[]}",
       "rolls": 2.0
     }
-  ]
+  ],
+  "random_sequence": "growablecells:blocks/crop_rs_ed_fluid_16384k_disk"
 }
