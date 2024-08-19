@@ -7,7 +7,6 @@ import org.apache.logging.log4j.core.config.plugins.Plugin;
 import org.apache.logging.log4j.core.filter.AbstractFilter;
 import org.apache.logging.log4j.message.Message;
 
-import java.util.regex.Pattern;
 
 @Plugin(name = "Log4jFilter", category = "Core", elementType = "filter", printObject = true)
 public final class LogFilter extends AbstractFilter {

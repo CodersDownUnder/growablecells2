@@ -1,2 +1,5 @@
-// 1.20.1	2024-08-12T13:49:57.660901834	Growable Cells Item Tags
-0cab70cd48b24fcbed1ee33f3974a2bc38826b3e data/forge/tags/items/seeds.json
+// 1.20.4	2024-08-19T17:49:50.396991949	Growable Cells Item Tags
+30061de9dec1acad7f6f9656f47de21d231f47f3 data/forge/tags/items/crops.json
+30061de9dec1acad7f6f9656f47de21d231f47f3 data/forge/tags/items/seeds.json
+30061de9dec1acad7f6f9656f47de21d231f47f3 data/minecraft/tags/items/small_flowers.json
+30061de9dec1acad7f6f9656f47de21d231f47f3 data/minecraft/tags/items/villager_plantable_seeds.json

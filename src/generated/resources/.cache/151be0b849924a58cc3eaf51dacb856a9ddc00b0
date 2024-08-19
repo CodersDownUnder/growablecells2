@@ -1,2 +1,7 @@
-// 1.20.1	2024-08-12T13:49:57.659979897	Growable Cells Block Tags
-74be8eeac6a806d62305eec5743dfc3cc7679dbc data/minecraft/tags/blocks/crops.json
+// 1.20.4	2024-08-19T17:49:50.396284749	Growable Cells Block Tags
+a289a64a14bd1e3e9267abcce8d1f014dfdb2b73 data/minecraft/tags/blocks/bee_growables.json
+a289a64a14bd1e3e9267abcce8d1f014dfdb2b73 data/minecraft/tags/blocks/crops.json
+a289a64a14bd1e3e9267abcce8d1f014dfdb2b73 data/minecraft/tags/blocks/maintains_farmland.json
+a289a64a14bd1e3e9267abcce8d1f014dfdb2b73 data/minecraft/tags/blocks/mineable/axe.json
+a289a64a14bd1e3e9267abcce8d1f014dfdb2b73 data/minecraft/tags/blocks/mineable/hoe.json
+a289a64a14bd1e3e9267abcce8d1f014dfdb2b73 data/minecraft/tags/blocks/small_flowers.json

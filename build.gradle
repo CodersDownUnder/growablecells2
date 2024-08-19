@@ -1,161 +1,105 @@
+import com.hypherionmc.modpublisher.properties.ModLoader
+
 plugins {
+    id 'java-library'
     id 'eclipse'
+    id 'idea'
     id 'maven-publish'
-    id 'net.minecraftforge.gradle' version '5.1.+'
-    id 'net.darkhax.curseforgegradle' version '1.0.11'
-    id("com.modrinth.minotaur") version "2.7.5"
-    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
-    id 'org.spongepowered.mixin' version '0.7.+'
+    id 'net.neoforged.gradle.userdev' version '7.0.161'
+    //id "io.github.themrmilchmann.curseforge-publish" version "0.6.1"
+    id "com.hypherionmc.modutils.modpublisher" version "2.1.6"
 }
 
-apply from: './gradle/property_loader.gradle'
-
-version = "${mc_version}-${mod_version}"
-group = 'net.codersdownunder.growablecells' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'growablecells'
+version = mod_version
+group = mod_group_id
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
+base {
+    archivesName = mod_id
+}
+
+
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
-minecraft {
-    // The mappings can be changed at any time and must be in the following format.
-    // Channel:   Version:
-    // official   MCVersion             Official field/method names from Mojang mapping files
-    // parchment  YYYY.MM.DD-MCVersion  Open community-sourced parameter names and javadocs layered on top of official
-    //
-    // You must be aware of the Mojang license when using the 'official' or 'parchment' mappings.
-    // See more information here: https://github.com/MinecraftForge/MCPConfig/blob/master/Mojang.md
-    //
-    // Parchment is an unofficial project maintained by ParchmentMC, separate from MinecraftForge
-    // Additional setup is needed to use their mappings: https://github.com/ParchmentMC/Parchment/wiki/Getting-Started
-    //
-    // Use non-default mappings at your own risk. They may not always work.
-    // Simply re-run your setup task after changing the mappings to update your workspace.
-    //mappings channel: 'official', version: '1.19.2'
-    mappings channel: 'official', version: '1.20.1'
-    // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg') // Currently, this location cannot be changed from the default.
 
-    // Default run configurations.
-    // These can be tweaked, removed, or duplicated as needed.
-    runs {
-        client {
-            workingDirectory project.file('run')
+runs {
+    configureEach {
+        // Recommended logging data for a userdev environment
+        // The markers can be added/remove as needed separated by commas.
+        // "SCAN": For mods scan.
+        // "REGISTRIES": For firing of registry events.
+        // "REGISTRYDUMP": For getting the contents of all registries.
+        systemProperty 'forge.logging.markers', 'REGISTRIES'
 
-            // Recommended logging data for a userdev environment
-            // The markers can be added/remove as needed separated by commas.
-            // "SCAN": For mods scan.
-            // "REGISTRIES": For firing of registry events.
-            // "REGISTRYDUMP": For getting the contents of all registries.
-            property 'forge.logging.markers', 'REGISTRIES'
+        // Recommended logging level for the console
+        // You can set various levels here.
+        // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
+        systemProperty 'forge.logging.console.level', 'debug'
 
-            // Recommended logging level for the console
-            // You can set various levels here.
-            // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
-            property 'forge.logging.console.level', 'debug'
+        systemProperty 'mixin.env.remapRefMap', 'true'
+        systemProperty 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
-            // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'examplemod'
+        modSource project.sourceSets.main
+    }
 
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+    client {
+        // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
+        systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+    }
 
-            mods {
-                examplemod {
-                    source sourceSets.main
-                }
-            }
-        }
+    server {
+        systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+        programArgument '--nogui'
+    }
 
-        server {
-            workingDirectory project.file('run')
+    // This run config launches GameTestServer and runs all registered gametests, then exits.
+    // By default, the server will crash when no gametests are provided.
+    // The gametest system is also enabled by default for other run configs under the /test command.
+    gameTestServer {
+        systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+    }
 
-            property 'forge.logging.markers', 'REGISTRIES'
+    data {
 
-            property 'forge.logging.console.level', 'debug'
-
-            property 'forge.enabledGameTestNamespaces', 'examplemod'
-
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
-
-            mods {
-                examplemod {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        // This run config launches GameTestServer and runs all registered gametests, then exits.
-        // By default, the server will crash when no gametests are provided.
-        // The gametest system is also enabled by default for other run configs under the /test command.
-        gameTestServer {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-
-            property 'forge.logging.console.level', 'debug'
-
-            property 'forge.enabledGameTestNamespaces', 'examplemod'
-
-            mods {
-                examplemod {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        data {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-
-            property 'forge.logging.console.level', 'debug'
-
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
-
-            // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'growablecells', '--all', '--output', file('src/generated/resources/'),
-                    '--existing', file('src/main/resources/'),
-                    '--existing-mod', "mekanism",
-                    '--existing-mod', "ae2",
-                    '--existing-mod', "refinedstorage",
-                    '--existing-mod', "extradisks",
-                    '--existing-mod', "extrastorage"
-
-            mods {
-                examplemod {
-                    source sourceSets.main
-                }
-            }
-        }
+        // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
+        programArguments('--all', '--output', project.file('src/generated/resources').getAbsolutePath(),
+                '--mod', 'growablecells', '--existing', project.file('src/main/resources/').getAbsolutePath(),
+                '--existing-mod', "mekanism",
+                '--existing-mod', "ae2",
+                '--existing-mod', "refinedstorage",
+                '--existing-mod', "extradisks",
+                '--existing-mod', "extrastorage")
     }
 }
 
 // Include resources generated by data generators.
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
+configurations {
+    runtimeClasspath.extendsFrom localRuntime
+}
+
 repositories {
     maven {
         name 'TOP'
         url 'https://maven.tterrag.com/'
     }
-        maven {
-            // location of the maven that hosts JEI files before January 2023
-            name = "Progwml6's maven"
-            url = "https://dvs1.progwml6.com/files/maven/"
-        }
-        maven {
-            // location of the maven that hosts JEI files since January 2023
-            name = "Jared's maven"
-            url = "https://maven.blamejared.com/"
-        }
-        maven {
-            // location of a maven mirror for JEI files, as a fallback
-            name = "ModMaven"
-            url = "https://modmaven.dev"
-        }
+    maven {
+        // location of the maven that hosts JEI files before January 2023
+        name = "Progwml6's maven"
+        url = "https://dvs1.progwml6.com/files/maven/"
+    }
+    maven {
+        // location of the maven that hosts JEI files since January 2023
+        name = "Jared's maven"
+        url = "https://maven.blamejared.com/"
+    }
+    maven {
+        // location of a maven mirror for JEI files, as a fallback
+        name = "ModMaven"
+        url = "https://modmaven.dev"
+    }
 
     maven {
         name 'RS maven'
@@ -179,100 +123,77 @@ repositories {
 
 dependencies {
 
-    minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
+    implementation "net.neoforged:neoforge:${neo_version}"
 
-    implementation fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
-    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}:api")
+    implementation "top.theillusivec4.curios:curios-neoforge:${curios_version}"
+    compileOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}:api"
 
-    compileOnly fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
-    compileOnly fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
+    compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
+    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
     // at runtime, use the full JEI jar for Forge
-    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
+    localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 
-    implementation fg.deobf("com.refinedmods:refinedstorage:${rs_version}") {
-        transitive false
-    }
+    implementation "mcjty.theoneprobe:theoneprobe:${top_version}"
 
-    implementation fg.deobf("appeng:appliedenergistics2-forge:${ae2_version}")
+    implementation "com.refinedmods:refinedstorage:${rs_version}"
 
-    implementation fg.deobf("curse.maven:extradisks-351491:4978177")
+    implementation "appeng:appliedenergistics2-neoforge:${ae2_version}"
+
+    //implementation fg.deobf("curse.maven:extradisks-351491:4978177")
 
 
-    implementation fg.deobf("curse.maven:extrastorage-410168:5168999")
-    implementation fg.deobf("curse.maven:edivadlib-638508:4717006")
+    implementation "curse.maven:extrastorage-410168:${extrastorage_file}"
+    implementation "curse.maven:edivadlib-638508:${edivadlib_file}"
 
     //runtimeOnly fg.deobf("net.darkhax.bookshelf:Bookshelf-Forge-${mc_version}:${bookshelf_version}")
     //runtimeOnly fg.deobf("net.darkhax.botanypots:BotanyPots-Forge-${mc_version}:${botanypot_version}")
 
     //compileOnly "mekanism:Mekanism:${mekanism_version}:api"
-    compileOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:api")
+    compileOnly "mekanism:Mekanism:${mekanism_version}:api"
 //
 //    // If you want to test/use Mekanism & its modules during `runClient` invocation, use the following
-    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}")// core
-    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:additions")// Mekanism: Additions
-    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:generators")// Mekanism: Generators
-    runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:tools")
+    localRuntime "mekanism:Mekanism:${mekanism_version}"// core
+    localRuntime "mekanism:Mekanism:${mekanism_version}:additions"// Mekanism: Additions
+    localRuntime "mekanism:Mekanism:${mekanism_version}:generators"// Mekanism: Generators
+    localRuntime "mekanism:Mekanism:${mekanism_version}:tools"
 
 
     //annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
 }
 
+tasks.withType(ProcessResources).configureEach {
+    var replaceProperties = [
+            minecraft_version   : minecraft_version, minecraft_version_range: minecraft_version_range,
+            neo_version         : neo_version, neo_version_range: neo_version_range,
+            loader_version_range: loader_version_range,
+            mod_id              : mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
+            mod_authors         : mod_authors, mod_description: mod_description,
+            rs_version          : rs_version, ae2_version: ae2_version,
+            mekanism_version    : mekanism_version, extrastorage_version: extrastorage_version
+    ]
+    inputs.properties replaceProperties
 
-// Example for how to get properties into the manifest for reading at runtime.
+    filesMatching(['META-INF/mods.toml']) {
+        expand replaceProperties + [project: project]
+    }
+}
+
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "examplemod",
-                "Specification-Vendor"    : "examplemodsareus",
+                "Specification-Title"     : mod_id,
+                "Specification-Vendor"    : mod_authors,
                 "Specification-Version"   : "1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "examplemodsareus",
+                "Implementation-Vendor"   : mod_authors,
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
 }
-
-// Example configuration to allow publishing using the maven-publish plugin
-// This is the preferred method to reobfuscate your jar file
-jar.finalizedBy('reobfJar')
-// However if you are in a multi-project build, dev time needs unobfed jar files, so you can delay the obfuscation until publishing by doing
-// publish.dependsOn('reobfJar')
-
-
-task publishCurseForge(type: net.darkhax.curseforgegradle.TaskPublishCurseForge) {
-
-    // This token is used to authenticate with CurseForge. It should be handled
-    // with the same level of care and security as your actual password. You
-    // should never share your token with an untrusted source or publish it
-    // publicly to GitHub or embed it within a project. The best practice is to
-    // store this token in an environment variable or a build secret.
-    apiToken = findProperty('curseforge_token')
-
-
-    // Tells CurseForgeGradle to publish the output of the jar task. This will
-    // return a UploadArtifact object that can be used to further configure the
-    // file.
-    def mainFile = upload(465594, jar)
-    mainFile.changelogType = 'markdown'
-    mainFile.changelog = 'changelog.md'
-}
-
-modrinth {
-    token = findProperty("modrinth_token") // This is the default. Remember to have the MODRINTH_TOKEN environment variable set or else this will fail, or set it to whatever you want - just make sure it stays private!
-    projectId = "KINNO5oH" // This can be the project ID or the slug. Either will work!
-    versionType = "release" // This is the default -- can also be `beta` or `alpha`
-    uploadFile = jar // With Loom, this MUST be set to `remapJar` instead of `jar`!
-    gameVersions = ["${mc_version}"] // Must be an array, even with only one version
-    loaders = ["forge"]
-    changelog = file('changelog.md').text// Must also be an array - no need to specify this if you're using Loom or ForgeGradle
-    dependencies { // A special DSL for creating dependencies
-
-        optional.version "biomesyougo"
-        optional.version "cyclic"
-    }
-}
+//
+//jar.finalizedBy('reobfJar')
 
 publishing {
     publications {
@@ -289,4 +210,106 @@ publishing {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
+
+idea {
+    module {
+        downloadSources = true
+        downloadJavadoc = true
+    }
+}
+
+
+//
+//curseforge {
+//    apiToken = System.getenv("CURSEFORGE_TOKEN") ?: project.findProperty("CURSEFORGE_TOKEN")
+//    publications {
+//
+//        register("curseForge") {
+//
+//
+//            projectId = "465594"
+//
+//            artifacts.register("main") {
+//
+//
+//                displayName = "${mod_id}-${mod_version}-${minecraft_version}"
+//                releaseType = ReleaseType.RELEASE
+//
+//                changelog {
+//                    format = ChangelogFormat.MARKDOWN
+//                    content = file("changelog.md").text
+//                }
+//
+//                relations {
+//                    optionalDependency("applied-energistics-2")
+//                    optionalDependency("refined-storage")
+//                    optionalDependency("extrastorage")
+//                    optionalDependency("mekanism")
+//                }
+//            }
+//        }
+//    }
+//}
+
+publisher {
+    // Setup the required API keys. You only need to define the keys for
+    // the platforms you plan on uploading to
+    apiKeys {
+        // Modrinth Token
+        modrinth System.getenv("MODRINTH_TOKEN") ?: project.findProperty("MODRINTH_TOKEN")
+
+        //Curseforge Token
+        curseforge System.getenv("CURSEFORGE_TOKEN") ?: project.findProperty("CURSEFORGE_TOKEN")
+    }
+
+    // Enable Debug mode. When enabled, no files will actually be uploaded
+    setDebug(false)
+
+    // Modrinth Project ID
+    setModrinthID("growablecells2")
+
+    setCurseID("465594")
+
+    // Type of release. beta, alpha or release
+    // You can also use VersionType.BETA, VersionType.ALPHA or VersionType.RELEASE
+    setVersionType("release")
+
+    // Changelog. This can be a file, string, OR, gist/github url
+    // For example: markdown.md, or "This is my changelog"
+    // Or: https://raw.githubusercontent.com/hypherionmc/changelogs/changelog.md
+    // Or https://gist.githubusercontent.com/hypherionmc/92f825d3c9337964cc77c9c8c9bf65e6/raw/ceeaaee5b98c688a23398864fe480b84796a1651/test_gist.md
+    setChangelog(file("changelog.md").text)
+
+    // Required for Modrinth/GitHub
+    setProjectVersion("1.20.4-${mod_version}")
+
+    // Fancy display name for the upload.
+    // Will default to the project version if not set
+    setDisplayName("Growable Cells 2 - ${mod_version} - ${minecraft_version}")
+
+    // The supported game versions
+    setGameVersions("${minecraft_version}")
+
+    setArtifact(jar)
+
+    // The modloaders your upload supports.
+    // This can also be an Enum from ModLoader,
+    // like setLoaders(ModLoader.FABRIC, ModLoader.FORGE)
+    setLoaders(ModLoader.NEOFORGE)
+
+    modrinthDepends {
+        optional 'extrastorage'
+        optional 'mekanism'
+        optional 'ae2'
+        optional 'refined-storage'
+    }
+
+    curseDepends {
+        optional 'extrastorage'
+        optional 'mekanism'
+        optional 'applied-energistics-2'
+        optional 'refined-storage'
+    }
+
 }

@@ -5,24 +5,16 @@ import appeng.core.definitions.AEItems;
 import com.refinedmods.refinedstorage.RSItems;
 import com.refinedmods.refinedstorage.apiimpl.storage.FluidStorageType;
 import com.refinedmods.refinedstorage.apiimpl.storage.ItemStorageType;
-import de.melanx.extradisks.items.Registration;
-import de.melanx.extradisks.items.fluid.ExtraFluidStorageType;
-import de.melanx.extradisks.items.item.ExtraItemStorageType;
 import net.codersdownunder.growablecells.GrowableCellsMod;
 import net.codersdownunder.growablecells.init.ItemInit;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.crafting.ConditionalRecipe;
-import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.conditions.IConditionBuilder;
+
 
 import java.util.function.Consumer;
 
@@ -33,7 +25,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     @Override
-    protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
+    protected void buildRecipes(RecipeOutput consumer) {
         /*
          * Refined Storage Recipes Start
          */
@@ -120,16 +112,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         GrowableCellsMod.LOGGER.info("Generating Mekanism QIO Seed Recipes");
 
         SeedRecipe("mekanism", consumer,
-                ForgeRegistries.ITEMS.getValue(new ResourceLocation("mekanism:qio_drive_base")),
+                BuiltInRegistries.ITEM.get(new ResourceLocation("mekanism:qio_drive_base")),
                 ItemInit.SEED_MEK_QIO_DRIVE.get());
         SeedRecipe("mekanism", consumer,
-                ForgeRegistries.ITEMS.getValue(new ResourceLocation("mekanism:qio_drive_hyper_dense")),
+                BuiltInRegistries.ITEM.get(new ResourceLocation("mekanism:qio_drive_hyper_dense")),
                 ItemInit.SEED_MEK_QIO_HYPER_DRIVE.get());
         SeedRecipe("mekanism", consumer,
-                ForgeRegistries.ITEMS.getValue(new ResourceLocation("mekanism:qio_drive_time_dilating")),
+                BuiltInRegistries.ITEM.get(new ResourceLocation("mekanism:qio_drive_time_dilating")),
                 ItemInit.SEED_MEK_QIO_TIME_DRIVE.get());
         SeedRecipe("mekanism", consumer,
-                ForgeRegistries.ITEMS.getValue(new ResourceLocation("mekanism:qio_drive_supermassive")),
+                BuiltInRegistries.ITEM.get(new ResourceLocation("mekanism:qio_drive_supermassive")),
                 ItemInit.SEED_MEK_QIO_SUPER_DRIVE.get());
 
         /*
@@ -140,53 +132,53 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
          * Extra Disks Recipes Start
          */
 
-        GrowableCellsMod.LOGGER.info("Generating Extra Disks Item Disk Seed Recipes");
-
-        SeedRecipe("extradisks", consumer,
-                Registration.ITEM_STORAGE_DISK.get(ExtraItemStorageType.TIER_5).get().asItem(),
-                ItemInit.SEED_RS_ED_256K_DISK.get());
-
-        SeedRecipe("extradisks", consumer,
-                Registration.ITEM_STORAGE_DISK.get(ExtraItemStorageType.TIER_6).get().asItem(),
-                ItemInit.SEED_RS_ED_1024K_DISK.get());
-
-        SeedRecipe("extradisks", consumer,
-                Registration.ITEM_STORAGE_DISK.get(ExtraItemStorageType.TIER_7).get().asItem(),
-                ItemInit.SEED_RS_ED_4096K_DISK.get());
-
-        SeedRecipe("extradisks", consumer,
-                Registration.ITEM_STORAGE_DISK.get(ExtraItemStorageType.TIER_8).get().asItem(),
-                ItemInit.SEED_RS_ED_16384K_DISK.get());
-
-        SeedRecipe("extradisks", consumer,
-                Registration.ITEM_STORAGE_DISK.get(ExtraItemStorageType.TIER_9).get().asItem(),
-                ItemInit.SEED_RS_ED_65536K_DISK.get());
-
-        SeedRecipe("extradisks", consumer,
-                Registration.ITEM_STORAGE_DISK.get(ExtraItemStorageType.TIER_10).get().asItem(),
-                ItemInit.SEED_RS_ED_262M_DISK.get());
-
-        SeedRecipe("extradisks", consumer,
-                Registration.ITEM_STORAGE_DISK.get(ExtraItemStorageType.TIER_11).get().asItem(),
-                ItemInit.SEED_RS_ED_1048M_DISK.get());
-
-        GrowableCellsMod.LOGGER.info("Generating Extra Disks Fluid Disk Seed Recipes");
-
-        SeedRecipe("extradisks", consumer,
-                Registration.FLUID_STORAGE_DISK.get(ExtraFluidStorageType.TIER_5_FLUID).get().asItem(),
-                ItemInit.SEED_RS_ED_FLUID_16384K_DISK.get());
-
-        SeedRecipe("extradisks", consumer,
-                Registration.FLUID_STORAGE_DISK.get(ExtraFluidStorageType.TIER_6_FLUID).get().asItem(),
-                ItemInit.SEED_RS_ED_FLUID_65536K_DISK.get());
-
-        SeedRecipe("extradisks", consumer,
-                Registration.FLUID_STORAGE_DISK.get(ExtraFluidStorageType.TIER_7_FLUID).get().asItem(),
-                ItemInit.SEED_RS_ED_FLUID_262M_DISK.get());
-
-        SeedRecipe("extradisks", consumer,
-                Registration.FLUID_STORAGE_DISK.get(ExtraFluidStorageType.TIER_8_FLUID).get().asItem(),
-                ItemInit.SEED_RS_ED_FLUID_1048M_DISK.get());
+//        GrowableCellsMod.LOGGER.info("Generating Extra Disks Item Disk Seed Recipes");
+//
+//        SeedRecipe("extradisks", consumer,
+//                Registration.ITEM_STORAGE_DISK.get(ExtraItemStorageType.TIER_5).get().asItem(),
+//                ItemInit.SEED_RS_ED_256K_DISK.get());
+//
+//        SeedRecipe("extradisks", consumer,
+//                Registration.ITEM_STORAGE_DISK.get(ExtraItemStorageType.TIER_6).get().asItem(),
+//                ItemInit.SEED_RS_ED_1024K_DISK.get());
+//
+//        SeedRecipe("extradisks", consumer,
+//                Registration.ITEM_STORAGE_DISK.get(ExtraItemStorageType.TIER_7).get().asItem(),
+//                ItemInit.SEED_RS_ED_4096K_DISK.get());
+//
+//        SeedRecipe("extradisks", consumer,
+//                Registration.ITEM_STORAGE_DISK.get(ExtraItemStorageType.TIER_8).get().asItem(),
+//                ItemInit.SEED_RS_ED_16384K_DISK.get());
+//
+//        SeedRecipe("extradisks", consumer,
+//                Registration.ITEM_STORAGE_DISK.get(ExtraItemStorageType.TIER_9).get().asItem(),
+//                ItemInit.SEED_RS_ED_65536K_DISK.get());
+//
+//        SeedRecipe("extradisks", consumer,
+//                Registration.ITEM_STORAGE_DISK.get(ExtraItemStorageType.TIER_10).get().asItem(),
+//                ItemInit.SEED_RS_ED_262M_DISK.get());
+//
+//        SeedRecipe("extradisks", consumer,
+//                Registration.ITEM_STORAGE_DISK.get(ExtraItemStorageType.TIER_11).get().asItem(),
+//                ItemInit.SEED_RS_ED_1048M_DISK.get());
+//
+//        GrowableCellsMod.LOGGER.info("Generating Extra Disks Fluid Disk Seed Recipes");
+//
+//        SeedRecipe("extradisks", consumer,
+//                Registration.FLUID_STORAGE_DISK.get(ExtraFluidStorageType.TIER_5_FLUID).get().asItem(),
+//                ItemInit.SEED_RS_ED_FLUID_16384K_DISK.get());
+//
+//        SeedRecipe("extradisks", consumer,
+//                Registration.FLUID_STORAGE_DISK.get(ExtraFluidStorageType.TIER_6_FLUID).get().asItem(),
+//                ItemInit.SEED_RS_ED_FLUID_65536K_DISK.get());
+//
+//        SeedRecipe("extradisks", consumer,
+//                Registration.FLUID_STORAGE_DISK.get(ExtraFluidStorageType.TIER_7_FLUID).get().asItem(),
+//                ItemInit.SEED_RS_ED_FLUID_262M_DISK.get());
+//
+//        SeedRecipe("extradisks", consumer,
+//                Registration.FLUID_STORAGE_DISK.get(ExtraFluidStorageType.TIER_8_FLUID).get().asItem(),
+//                ItemInit.SEED_RS_ED_FLUID_1048M_DISK.get());
 
         /*
          * Extra Disks Recipes End
@@ -246,21 +238,18 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     }
 
-    private void SeedRecipe(String modid, Consumer<FinishedRecipe> consumer, Item cell, Item cellSeed) {
+    private void SeedRecipe(String modid, RecipeOutput pWriter, Item cell, Item cellSeed) {
 
-        ConditionalRecipe.builder()
-                .addCondition(and(modLoaded(modid), not(FALSE())))
-                .addRecipe(ShapedRecipeBuilder.shaped(RecipeCategory.MISC, cell)
-                        .group("growablecells_" + modid)
-                        .pattern(" a ")
-                        .pattern("aba")
-                        .pattern(" a ")
-                        .define('b', Tags.Items.SEEDS)
-                        .define('a', cell)
-                        .unlockedBy("has_" + cell.getDescriptionId().substring(6 + modid.length()), has(cell))
-                        ::save)
-                .generateAdvancement()
-                .build(consumer, new ResourceLocation(GrowableCellsMod.MODID, "cellseed_" + ForgeRegistries.ITEMS.getKey(cellSeed).getPath()));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, cellSeed, 1)
+                        .requires(cell, 4)
+                        .requires(Tags.Items.SEEDS)
+                                .unlockedBy(getHasName(cell), has(cell))
+                                        .save(pWriter.withConditions(
+                                                and(
+                                                        not(modLoaded(BuiltInRegistries.ITEM.getKey(cell).getNamespace())), FALSE())
+                                                )
+                                        );
+
 
 //        GrowableCellsMod.LOGGER.info("************ " + cell.getDescriptionId().substring(6 + modid.length()));
 

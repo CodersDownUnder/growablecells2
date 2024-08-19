@@ -1,0 +1,51 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:and",
+      "values": [
+        {
+          "type": "neoforge:not",
+          "value": {
+            "type": "neoforge:mod_loaded",
+            "modid": "refinedstorage"
+          }
+        },
+        {
+          "type": "neoforge:false"
+        }
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_1k_storage_disk": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "refinedstorage:1k_storage_disk"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "growablecells:seed_rs_1k_disk"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_1k_storage_disk"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "growablecells:seed_rs_1k_disk"
+    ]
+  }
+}

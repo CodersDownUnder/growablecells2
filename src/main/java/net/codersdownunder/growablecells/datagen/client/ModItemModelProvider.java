@@ -2,16 +2,14 @@ package net.codersdownunder.growablecells.datagen.client;
 
 import net.codersdownunder.growablecells.GrowableCellsMod;
 import net.codersdownunder.growablecells.init.ItemInit;
-import net.minecraft.data.DataGenerator;
+
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.packs.PackType;
+
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.client.model.generators.ItemModelBuilder;
-import net.minecraftforge.client.model.generators.ItemModelProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
+import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import javax.annotation.Nonnull;
 
@@ -74,24 +72,24 @@ public class ModItemModelProvider extends ItemModelProvider {
         oneLayerItem(ItemInit.SEED_RS_ES_FLUID_1048576K_DISK.get());
 
 
-        oneLayerItem(ItemInit.SEED_RS_ED_256K_DISK.get());
-        oneLayerItem(ItemInit.SEED_RS_ED_1024K_DISK.get());
-        oneLayerItem(ItemInit.SEED_RS_ED_4096K_DISK.get());
-        oneLayerItem(ItemInit.SEED_RS_ED_16384K_DISK.get());
-        oneLayerItem(ItemInit.SEED_RS_ED_65536K_DISK.get());
-        oneLayerItem(ItemInit.SEED_RS_ED_262M_DISK.get());
-        oneLayerItem(ItemInit.SEED_RS_ED_1048M_DISK.get());
-
-
-        oneLayerItem(ItemInit.SEED_RS_ED_FLUID_16384K_DISK.get());
-        oneLayerItem(ItemInit.SEED_RS_ED_FLUID_65536K_DISK.get());
-        oneLayerItem(ItemInit.SEED_RS_ED_FLUID_262M_DISK.get());
-        oneLayerItem(ItemInit.SEED_RS_ED_FLUID_1048M_DISK.get());
+//        oneLayerItem(ItemInit.SEED_RS_ED_256K_DISK.get());
+//        oneLayerItem(ItemInit.SEED_RS_ED_1024K_DISK.get());
+//        oneLayerItem(ItemInit.SEED_RS_ED_4096K_DISK.get());
+//        oneLayerItem(ItemInit.SEED_RS_ED_16384K_DISK.get());
+//        oneLayerItem(ItemInit.SEED_RS_ED_65536K_DISK.get());
+//        oneLayerItem(ItemInit.SEED_RS_ED_262M_DISK.get());
+//        oneLayerItem(ItemInit.SEED_RS_ED_1048M_DISK.get());
+//
+//
+//        oneLayerItem(ItemInit.SEED_RS_ED_FLUID_16384K_DISK.get());
+//        oneLayerItem(ItemInit.SEED_RS_ED_FLUID_65536K_DISK.get());
+//        oneLayerItem(ItemInit.SEED_RS_ED_FLUID_262M_DISK.get());
+//        oneLayerItem(ItemInit.SEED_RS_ED_FLUID_1048M_DISK.get());
 
     }
 
     private ItemModelBuilder oneLayerItem(final Item item) {
-        return withExistingParent(ForgeRegistries.ITEMS.getKey(item.asItem()).getPath(), "item/generated")
+        return withExistingParent(BuiltInRegistries.ITEM.getKey(item.asItem()).getPath(), "item/generated")
                 .texture("layer0", modLoc("item/seed"));
     }
 

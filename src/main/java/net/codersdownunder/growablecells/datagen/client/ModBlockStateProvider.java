@@ -3,14 +3,13 @@ package net.codersdownunder.growablecells.datagen.client;
 import net.codersdownunder.growablecells.GrowableCellsMod;
 import net.codersdownunder.growablecells.blocks.SingleCropBlock;
 import net.codersdownunder.growablecells.init.BlockInit;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
-import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import javax.annotation.Nonnull;
 
@@ -85,24 +84,24 @@ public class ModBlockStateProvider extends BlockStateProvider {
          * Extra Disks Crop Blockstates and Models
          */
 
-        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ED_256K_DISK.get(), "extradisks", "item/256k_storage_disk");
-        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ED_1024K_DISK.get(), "extradisks", "item/1024k_storage_disk");
-        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ED_4096K_DISK.get(), "extradisks", "item/4096k_storage_disk");
-        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ED_16384K_DISK.get(), "extradisks", "item/16384k_storage_disk");
-        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ED_65536K_DISK.get(), "extradisks", "item/65536k_storage_disk");
-        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ED_262M_DISK.get(), "extradisks", "item/262144k_storage_disk");
-        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ED_1048M_DISK.get(), "extradisks", "item/1048576k_storage_disk");
-
-        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ED_FLUID_16384K_DISK.get(), "extradisks", "item/16384k_fluid_storage_disk");
-        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ED_FLUID_65536K_DISK.get(), "extradisks", "item/65536k_fluid_storage_disk");
-        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ED_FLUID_262M_DISK.get(), "extradisks", "item/262144k_fluid_storage_disk");
-        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ED_FLUID_1048M_DISK.get(), "extradisks", "item/1048576k_fluid_storage_disk");
+//        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ED_256K_DISK.get(), "extradisks", "item/256k_storage_disk");
+//        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ED_1024K_DISK.get(), "extradisks", "item/1024k_storage_disk");
+//        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ED_4096K_DISK.get(), "extradisks", "item/4096k_storage_disk");
+//        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ED_16384K_DISK.get(), "extradisks", "item/16384k_storage_disk");
+//        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ED_65536K_DISK.get(), "extradisks", "item/65536k_storage_disk");
+//        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ED_262M_DISK.get(), "extradisks", "item/262144k_storage_disk");
+//        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ED_1048M_DISK.get(), "extradisks", "item/1048576k_storage_disk");
+//
+//        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ED_FLUID_16384K_DISK.get(), "extradisks", "item/16384k_fluid_storage_disk");
+//        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ED_FLUID_65536K_DISK.get(), "extradisks", "item/65536k_fluid_storage_disk");
+//        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ED_FLUID_262M_DISK.get(), "extradisks", "item/262144k_fluid_storage_disk");
+//        makeCrop((SingleCropBlock) BlockInit.CROP_RS_ED_FLUID_1048M_DISK.get(), "extradisks", "item/1048576k_fluid_storage_disk");
 
     }
 
     public void makeCrop(CropBlock block, String modid,  String textureName) {
 
-        String blockName = ForgeRegistries.BLOCKS.getKey(block).getPath();
+        String blockName = BuiltInRegistries.BLOCK.getKey(block).getPath();
 
         ModelFile stage_0 = models().crop(blockName + "_stage_0", modLoc("block/crop_stage_0")).renderType("minecraft:cutout_mipped");
         ModelFile stage_1 = models().crop(blockName + "_stage_1", modLoc("block/crop_stage_1")).renderType("minecraft:cutout_mipped");

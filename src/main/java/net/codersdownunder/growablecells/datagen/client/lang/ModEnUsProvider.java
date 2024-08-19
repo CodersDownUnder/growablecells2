@@ -2,9 +2,8 @@ package net.codersdownunder.growablecells.datagen.client.lang;
 
 import net.codersdownunder.growablecells.GrowableCellsMod;
 import net.codersdownunder.growablecells.init.BlockInit;
-import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.LanguageProvider;
+import net.neoforged.neoforge.common.data.LanguageProvider;
 
 public class ModEnUsProvider extends LanguageProvider {
 
@@ -25,7 +24,7 @@ public class ModEnUsProvider extends LanguageProvider {
         addAETranslations();
         addQIOTranslation();
         addRSESTranslations();
-        addRSEDTranslations();
+        //addRSEDTranslations();
 
         add("itemGroup.growablecells", "Growable Cells 2");
         add("growablecells.text.packmeta.description", "Growable cells resource and datapack");
@@ -76,20 +75,20 @@ public class ModEnUsProvider extends LanguageProvider {
         add(BlockInit.CROP_RS_ES_FLUID_1048576K_DISK.get(), "Extra Storage 1048576K Disk Seed");
     }
 
-    private void addRSEDTranslations() {
-        add(BlockInit.CROP_RS_ED_256K_DISK.get(), "Extra Disks 256K Disk Seed");
-        add(BlockInit.CROP_RS_ED_1024K_DISK.get(), "Extra Disks 1024K Disk Seed");
-        add(BlockInit.CROP_RS_ED_4096K_DISK.get(), "Extra Disks 4096K Disk Seed");
-        add(BlockInit.CROP_RS_ED_16384K_DISK.get(), "Extra Disks 16384K Disk Seed");
-        add(BlockInit.CROP_RS_ED_65536K_DISK.get(), "Extra Disks 65536K Disk Seed");
-        add(BlockInit.CROP_RS_ED_262M_DISK.get(), "Extra Disks 262M Disk Seed");
-        add(BlockInit.CROP_RS_ED_1048M_DISK.get(), "Extra Disks 1048M Disk Seed");
-        //add(BlockInit.CROP_RS_ED_INFINITE_DISK.get(), "Extra Disks Infinite Disk Seed");
-        add(BlockInit.CROP_RS_ED_FLUID_16384K_DISK.get(), "Extra Disks 16384K Fluid Disk Seed");
-        add(BlockInit.CROP_RS_ED_FLUID_65536K_DISK.get(), "Extra Disks 65536K Fluid Disk Seed");
-        add(BlockInit.CROP_RS_ED_FLUID_262M_DISK.get(), "Extra Disks 262M Fluid Disk Seed");
-        add(BlockInit.CROP_RS_ED_FLUID_1048M_DISK.get(), "Extra Disks 1048M Fluid Disk Seed");
-        //add(BlockInit.CROP_RS_ED_FLUID_INFINITE_DISK.get(), "Extra Disks Infinite Fluid Disk Seed");
-    }
+//    private void addRSEDTranslations() {
+//        add(BlockInit.CROP_RS_ED_256K_DISK.get(), "Extra Disks 256K Disk Seed");
+//        add(BlockInit.CROP_RS_ED_1024K_DISK.get(), "Extra Disks 1024K Disk Seed");
+//        add(BlockInit.CROP_RS_ED_4096K_DISK.get(), "Extra Disks 4096K Disk Seed");
+//        add(BlockInit.CROP_RS_ED_16384K_DISK.get(), "Extra Disks 16384K Disk Seed");
+//        add(BlockInit.CROP_RS_ED_65536K_DISK.get(), "Extra Disks 65536K Disk Seed");
+//        add(BlockInit.CROP_RS_ED_262M_DISK.get(), "Extra Disks 262M Disk Seed");
+//        add(BlockInit.CROP_RS_ED_1048M_DISK.get(), "Extra Disks 1048M Disk Seed");
+//        //add(BlockInit.CROP_RS_ED_INFINITE_DISK.get(), "Extra Disks Infinite Disk Seed");
+//        add(BlockInit.CROP_RS_ED_FLUID_16384K_DISK.get(), "Extra Disks 16384K Fluid Disk Seed");
+//        add(BlockInit.CROP_RS_ED_FLUID_65536K_DISK.get(), "Extra Disks 65536K Fluid Disk Seed");
+//        add(BlockInit.CROP_RS_ED_FLUID_262M_DISK.get(), "Extra Disks 262M Fluid Disk Seed");
+//        add(BlockInit.CROP_RS_ED_FLUID_1048M_DISK.get(), "Extra Disks 1048M Fluid Disk Seed");
+//        //add(BlockInit.CROP_RS_ED_FLUID_INFINITE_DISK.get(), "Extra Disks Infinite Fluid Disk Seed");
+//    }
 
 }

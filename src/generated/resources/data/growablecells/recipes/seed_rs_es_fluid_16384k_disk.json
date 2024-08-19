@@ -1,0 +1,41 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:and",
+      "values": [
+        {
+          "type": "neoforge:not",
+          "value": {
+            "type": "neoforge:mod_loaded",
+            "modid": "extrastorage"
+          }
+        },
+        {
+          "type": "neoforge:false"
+        }
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "extrastorage:disk_16384k_fluid"
+    },
+    {
+      "item": "extrastorage:disk_16384k_fluid"
+    },
+    {
+      "item": "extrastorage:disk_16384k_fluid"
+    },
+    {
+      "item": "extrastorage:disk_16384k_fluid"
+    },
+    {
+      "tag": "forge:seeds"
+    }
+  ],
+  "result": {
+    "item": "growablecells:seed_rs_es_fluid_16384k_disk"
+  }
+}

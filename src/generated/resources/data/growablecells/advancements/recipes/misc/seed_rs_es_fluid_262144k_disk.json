@@ -1,0 +1,51 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:and",
+      "values": [
+        {
+          "type": "neoforge:not",
+          "value": {
+            "type": "neoforge:mod_loaded",
+            "modid": "extrastorage"
+          }
+        },
+        {
+          "type": "neoforge:false"
+        }
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_disk_262144k_fluid": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extrastorage:disk_262144k_fluid"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "growablecells:seed_rs_es_fluid_262144k_disk"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_disk_262144k_fluid"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "growablecells:seed_rs_es_fluid_262144k_disk"
+    ]
+  }
+}

@@ -1,20 +1,15 @@
 package net.codersdownunder.growablecells.datagen.server;
 
 import appeng.core.definitions.AEItems;
-import com.mojang.datafixers.util.Pair;
 import com.refinedmods.refinedstorage.RSItems;
 import com.refinedmods.refinedstorage.apiimpl.storage.FluidStorageType;
 import com.refinedmods.refinedstorage.apiimpl.storage.ItemStorageType;
-import de.melanx.extradisks.items.Registration;
-import de.melanx.extradisks.items.fluid.ExtraFluidStorageType;
-import de.melanx.extradisks.items.item.ExtraItemStorageType;
-import net.codersdownunder.growablecells.GrowableCellsMod;
 import net.codersdownunder.growablecells.blocks.SingleCropBlock;
 import net.codersdownunder.growablecells.init.BlockInit;
 import net.codersdownunder.growablecells.init.ItemInit;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.PackOutput;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.flag.FeatureFlags;
@@ -29,17 +24,9 @@ import net.minecraft.world.level.storage.loot.functions.ApplyExplosionDecay;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 
-import javax.annotation.Nonnull;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
+
 
 
 public final class ModLootTableProvider  extends BlockLootSubProvider {
@@ -71,10 +58,10 @@ public final class ModLootTableProvider  extends BlockLootSubProvider {
          * Mekanism Crop LootTables
          */
 
-        createLootTable(BlockInit.CROP_MEK_QIO_DRIVE.get(), ForgeRegistries.ITEMS.getValue(new ResourceLocation("mekanism:qio_drive_base")), ItemInit.SEED_MEK_QIO_DRIVE.get());
-        createLootTable(BlockInit.CROP_MEK_QIO_HYPER_DRIVE.get(), ForgeRegistries.ITEMS.getValue(new ResourceLocation("mekanism:qio_drive_hyper_dense")), ItemInit.SEED_MEK_QIO_HYPER_DRIVE.get());
-        createLootTable(BlockInit.CROP_MEK_QIO_TIME_DRIVE.get(), ForgeRegistries.ITEMS.getValue(new ResourceLocation("mekanism:qio_drive_time_dilating")), ItemInit.SEED_MEK_QIO_TIME_DRIVE.get());
-        createLootTable(BlockInit.CROP_MEK_QIO_SUPER_DRIVE.get(), ForgeRegistries.ITEMS.getValue(new ResourceLocation("mekanism:qio_drive_supermassive")), ItemInit.SEED_MEK_QIO_SUPER_DRIVE.get());
+        createLootTable(BlockInit.CROP_MEK_QIO_DRIVE.get(), BuiltInRegistries.ITEM.get(new ResourceLocation("mekanism:qio_drive_base")), ItemInit.SEED_MEK_QIO_DRIVE.get());
+        createLootTable(BlockInit.CROP_MEK_QIO_HYPER_DRIVE.get(), BuiltInRegistries.ITEM.get(new ResourceLocation("mekanism:qio_drive_hyper_dense")), ItemInit.SEED_MEK_QIO_HYPER_DRIVE.get());
+        createLootTable(BlockInit.CROP_MEK_QIO_TIME_DRIVE.get(), BuiltInRegistries.ITEM.get(new ResourceLocation("mekanism:qio_drive_time_dilating")), ItemInit.SEED_MEK_QIO_TIME_DRIVE.get());
+        createLootTable(BlockInit.CROP_MEK_QIO_SUPER_DRIVE.get(), BuiltInRegistries.ITEM.get(new ResourceLocation("mekanism:qio_drive_supermassive")), ItemInit.SEED_MEK_QIO_SUPER_DRIVE.get());
 
         /*
          * RS Crop LootTables
@@ -108,51 +95,51 @@ public final class ModLootTableProvider  extends BlockLootSubProvider {
         /*
          * Extra Disks Crop LootTables
          */
-
-        createLootTable(BlockInit.CROP_RS_ED_256K_DISK.get(),
-                Registration.ITEM_STORAGE_DISK.get(ExtraItemStorageType.TIER_5).get().asItem(),
-                ItemInit.SEED_RS_ED_256K_DISK.get());
-
-        createLootTable(BlockInit.CROP_RS_ED_1024K_DISK.get(),
-                Registration.ITEM_STORAGE_DISK.get(ExtraItemStorageType.TIER_6).get().asItem(),
-                ItemInit.SEED_RS_ED_1024K_DISK.get());
-
-        createLootTable(BlockInit.CROP_RS_ED_4096K_DISK.get(),
-                Registration.ITEM_STORAGE_DISK.get(ExtraItemStorageType.TIER_7).get().asItem(),
-                ItemInit.SEED_RS_ED_4096K_DISK.get());
-
-        createLootTable(BlockInit.CROP_RS_ED_16384K_DISK.get(),
-                Registration.ITEM_STORAGE_DISK.get(ExtraItemStorageType.TIER_8).get().asItem(),
-                ItemInit.SEED_RS_ED_16384K_DISK.get());
-
-        createLootTable(BlockInit.CROP_RS_ED_65536K_DISK.get(),
-                Registration.ITEM_STORAGE_DISK.get(ExtraItemStorageType.TIER_9).get().asItem(),
-                ItemInit.SEED_RS_ED_65536K_DISK.get());
-
-        createLootTable(BlockInit.CROP_RS_ED_262M_DISK.get(),
-                Registration.ITEM_STORAGE_DISK.get(ExtraItemStorageType.TIER_10).get().asItem(),
-                ItemInit.SEED_RS_ED_262M_DISK.get());
-
-        createLootTable(BlockInit.CROP_RS_ED_1048M_DISK.get(),
-                Registration.ITEM_STORAGE_DISK.get(ExtraItemStorageType.TIER_11).get().asItem(),
-                ItemInit.SEED_RS_ED_1048M_DISK.get());
-
-
-        createLootTable(BlockInit.CROP_RS_ED_FLUID_16384K_DISK.get(),
-                Registration.FLUID_STORAGE_DISK.get(ExtraFluidStorageType.TIER_5_FLUID).get().asItem(),
-                ItemInit.SEED_RS_ED_FLUID_16384K_DISK.get());
-
-        createLootTable(BlockInit.CROP_RS_ED_FLUID_65536K_DISK.get(),
-                Registration.FLUID_STORAGE_DISK.get(ExtraFluidStorageType.TIER_6_FLUID).get().asItem(),
-                ItemInit.SEED_RS_ED_FLUID_65536K_DISK.get());
-
-        createLootTable(BlockInit.CROP_RS_ED_FLUID_262M_DISK.get(),
-                Registration.FLUID_STORAGE_DISK.get(ExtraFluidStorageType.TIER_7_FLUID).get().asItem(),
-                ItemInit.SEED_RS_ED_FLUID_262M_DISK.get());
-
-        createLootTable(BlockInit.CROP_RS_ED_FLUID_1048M_DISK.get(),
-                Registration.FLUID_STORAGE_DISK.get(ExtraFluidStorageType.TIER_8_FLUID).get().asItem(),
-                ItemInit.SEED_RS_ED_FLUID_1048M_DISK.get());
+//
+//        createLootTable(BlockInit.CROP_RS_ED_256K_DISK.get(),
+//                Registration.ITEM_STORAGE_DISK.get(ExtraItemStorageType.TIER_5).get().asItem(),
+//                ItemInit.SEED_RS_ED_256K_DISK.get());
+//
+//        createLootTable(BlockInit.CROP_RS_ED_1024K_DISK.get(),
+//                Registration.ITEM_STORAGE_DISK.get(ExtraItemStorageType.TIER_6).get().asItem(),
+//                ItemInit.SEED_RS_ED_1024K_DISK.get());
+//
+//        createLootTable(BlockInit.CROP_RS_ED_4096K_DISK.get(),
+//                Registration.ITEM_STORAGE_DISK.get(ExtraItemStorageType.TIER_7).get().asItem(),
+//                ItemInit.SEED_RS_ED_4096K_DISK.get());
+//
+//        createLootTable(BlockInit.CROP_RS_ED_16384K_DISK.get(),
+//                Registration.ITEM_STORAGE_DISK.get(ExtraItemStorageType.TIER_8).get().asItem(),
+//                ItemInit.SEED_RS_ED_16384K_DISK.get());
+//
+//        createLootTable(BlockInit.CROP_RS_ED_65536K_DISK.get(),
+//                Registration.ITEM_STORAGE_DISK.get(ExtraItemStorageType.TIER_9).get().asItem(),
+//                ItemInit.SEED_RS_ED_65536K_DISK.get());
+//
+//        createLootTable(BlockInit.CROP_RS_ED_262M_DISK.get(),
+//                Registration.ITEM_STORAGE_DISK.get(ExtraItemStorageType.TIER_10).get().asItem(),
+//                ItemInit.SEED_RS_ED_262M_DISK.get());
+//
+//        createLootTable(BlockInit.CROP_RS_ED_1048M_DISK.get(),
+//                Registration.ITEM_STORAGE_DISK.get(ExtraItemStorageType.TIER_11).get().asItem(),
+//                ItemInit.SEED_RS_ED_1048M_DISK.get());
+//
+//
+//        createLootTable(BlockInit.CROP_RS_ED_FLUID_16384K_DISK.get(),
+//                Registration.FLUID_STORAGE_DISK.get(ExtraFluidStorageType.TIER_5_FLUID).get().asItem(),
+//                ItemInit.SEED_RS_ED_FLUID_16384K_DISK.get());
+//
+//        createLootTable(BlockInit.CROP_RS_ED_FLUID_65536K_DISK.get(),
+//                Registration.FLUID_STORAGE_DISK.get(ExtraFluidStorageType.TIER_6_FLUID).get().asItem(),
+//                ItemInit.SEED_RS_ED_FLUID_65536K_DISK.get());
+//
+//        createLootTable(BlockInit.CROP_RS_ED_FLUID_262M_DISK.get(),
+//                Registration.FLUID_STORAGE_DISK.get(ExtraFluidStorageType.TIER_7_FLUID).get().asItem(),
+//                ItemInit.SEED_RS_ED_FLUID_262M_DISK.get());
+//
+//        createLootTable(BlockInit.CROP_RS_ED_FLUID_1048M_DISK.get(),
+//                Registration.FLUID_STORAGE_DISK.get(ExtraFluidStorageType.TIER_8_FLUID).get().asItem(),
+//                ItemInit.SEED_RS_ED_FLUID_1048M_DISK.get());
 
         /*
          * Extra Storage Crop LootTables
@@ -233,6 +220,9 @@ public final class ModLootTableProvider  extends BlockLootSubProvider {
 
     @Override
     protected Iterable<Block> getKnownBlocks() {
-        return BlockInit.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
+        return BlockInit.BLOCKS.getEntries() // Get all registered entries
+                .stream() // Stream the wrapped objects
+                .map(Holder::value) // Get the object if available
+                ::iterator; // Create the iterable
     }
 }

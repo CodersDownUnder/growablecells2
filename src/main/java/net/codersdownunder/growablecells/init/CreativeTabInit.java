@@ -1,25 +1,26 @@
 package net.codersdownunder.growablecells.init;
 
 import net.codersdownunder.growablecells.GrowableCellsMod;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.function.Supplier;
+
 
 public class CreativeTabInit {
 
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, GrowableCellsMod.MODID);
 
-    public static final RegistryObject<CreativeModeTab> GROWABLECELLS_TAB = CREATIVE_MODE_TABS.register("growablecells_tab",
-            () -> CreativeModeTab.builder().icon(CreativeTabInit::getIcon)
+    public static final Supplier<CreativeModeTab> GROWABLECELLS_TAB = CREATIVE_MODE_TABS.register("growablecells_tab",
+            () -> CreativeModeTab.builder().icon(CreativeTabInit.getIcon())
                     .title(Component.translatable("itemGroup.growablecells"))
                     .withSearchBar()
                     .displayItems((pParameters, pOutput) -> {
@@ -52,22 +53,22 @@ public class CreativeTabInit {
                             pOutput.accept(new ItemStack(ItemInit.SEED_RS_FLUID_4096K_DISK.get()));
                         }
 
-                        if (GrowableCellsMod.RSEDLoaded) {
-                            pOutput.accept(new ItemStack(ItemInit.SEED_RS_ED_256K_DISK.get()));
-                            pOutput.accept(new ItemStack(ItemInit.SEED_RS_ED_1024K_DISK.get()));
-                            pOutput.accept(new ItemStack(ItemInit.SEED_RS_ED_4096K_DISK.get()));
-                            pOutput.accept(new ItemStack(ItemInit.SEED_RS_ED_16384K_DISK.get()));
-                            pOutput.accept(new ItemStack(ItemInit.SEED_RS_ED_65536K_DISK.get()));
-                            pOutput.accept(new ItemStack(ItemInit.SEED_RS_ED_262M_DISK.get()));
-                            pOutput.accept(new ItemStack(ItemInit.SEED_RS_ED_1048M_DISK.get()));
-                            //pOutput.accept(new ItemStack(ItemInit.SEED_RS_ED_INFINITE_DISK.get()));
-
-                            pOutput.accept(new ItemStack(ItemInit.SEED_RS_ED_FLUID_16384K_DISK.get()));
-                            pOutput.accept(new ItemStack(ItemInit.SEED_RS_ED_FLUID_65536K_DISK.get()));
-                            pOutput.accept(new ItemStack(ItemInit.SEED_RS_ED_FLUID_262M_DISK.get()));
-                            pOutput.accept(new ItemStack(ItemInit.SEED_RS_ED_FLUID_1048M_DISK.get()));
-                            //pOutput.accept(new ItemStack(ItemInit.SEED_RS_ED_FLUID_INFINITE_DISK.get()));
-                        }
+//                        if (GrowableCellsMod.RSEDLoaded) {
+//                            pOutput.accept(new ItemStack(ItemInit.SEED_RS_ED_256K_DISK.get()));
+//                            pOutput.accept(new ItemStack(ItemInit.SEED_RS_ED_1024K_DISK.get()));
+//                            pOutput.accept(new ItemStack(ItemInit.SEED_RS_ED_4096K_DISK.get()));
+//                            pOutput.accept(new ItemStack(ItemInit.SEED_RS_ED_16384K_DISK.get()));
+//                            pOutput.accept(new ItemStack(ItemInit.SEED_RS_ED_65536K_DISK.get()));
+//                            pOutput.accept(new ItemStack(ItemInit.SEED_RS_ED_262M_DISK.get()));
+//                            pOutput.accept(new ItemStack(ItemInit.SEED_RS_ED_1048M_DISK.get()));
+//                            //pOutput.accept(new ItemStack(ItemInit.SEED_RS_ED_INFINITE_DISK.get()));
+//
+//                            pOutput.accept(new ItemStack(ItemInit.SEED_RS_ED_FLUID_16384K_DISK.get()));
+//                            pOutput.accept(new ItemStack(ItemInit.SEED_RS_ED_FLUID_65536K_DISK.get()));
+//                            pOutput.accept(new ItemStack(ItemInit.SEED_RS_ED_FLUID_262M_DISK.get()));
+//                            pOutput.accept(new ItemStack(ItemInit.SEED_RS_ED_FLUID_1048M_DISK.get()));
+//                            //pOutput.accept(new ItemStack(ItemInit.SEED_RS_ED_FLUID_INFINITE_DISK.get()));
+//                        }
 
                         if (GrowableCellsMod.RSESLoaded) {
                             pOutput.accept(new ItemStack(ItemInit.SEED_RS_ES_256K_DISK.get()));
@@ -98,20 +99,24 @@ public class CreativeTabInit {
     }
 
 
-    private static ItemStack getIcon() {
+    private static Supplier<ItemStack> getIcon() {
+
+        Supplier<ItemStack> stack = () -> new ItemStack(Items.BARRIER);
+
         if (GrowableCellsMod.AE2Loaded) {
-            return new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("ae2:1k_storage_cell")));
+
+            stack = () -> new ItemStack(BuiltInRegistries.ITEM.get(new ResourceLocation("ae2:1k_storage_cell")));
         }
 
         if (GrowableCellsMod.RSLoaded) {
-            return new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("refinedstorage:1k_storage_disk")));
+            stack = () -> new ItemStack(BuiltInRegistries.ITEM.get(new ResourceLocation("refinedstorage:1k_storage_disk")));
         }
 
         if (GrowableCellsMod.MEKLoaded) {
-            return new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("mekanism:qio_drive_base")));
+            stack = () -> new ItemStack(BuiltInRegistries.ITEM.get(new ResourceLocation("mekanism:qio_drive_base")));
         }
 
-        return new ItemStack(Items.BARRIER);
+        return stack;
     }
 
 }
